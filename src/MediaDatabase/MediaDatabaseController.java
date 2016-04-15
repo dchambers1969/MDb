@@ -50,7 +50,7 @@ public class MediaDatabaseController implements Serializable {
 	private MakerActionListView makerActionListView;
 	private MediaActionListView mediaActionListView;
 	private EditMediaView editMediaView;
-	private AddMakerView addMakerView;
+	private AddEditMakerView addMakerView;
 	private AddMediaView addMediaView;
 	private AddCastToMediaView addCastToMediaView;
 	
@@ -986,14 +986,14 @@ public class MediaDatabaseController implements Serializable {
 	/**
 	 * @return the addMakerView
 	 */
-	public AddMakerView getAddMakerView() {
+	public AddEditMakerView getAddMakerView() {
 		return addMakerView;
 	}
 
 	/**
 	 * @param addMakerView the addMakerView to set
 	 */
-	public void setAddMakerView(AddMakerView addMakerView) {
+	public void setAddMakerView(AddEditMakerView addMakerView) {
 		this.addMakerView = addMakerView;
 	}
 
