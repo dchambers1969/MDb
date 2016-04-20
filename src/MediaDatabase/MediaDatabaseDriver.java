@@ -1,19 +1,51 @@
 package MediaDatabase;
 
 public class MediaDatabaseDriver {
-
+	
+	// Controller
+	static MediaDatabaseController mediaDatabaseController;
+		
+	// Models
+	static MDbModel mdbModel = new MDbModel();
+	static MakerCreditsModel makerCreditsModel = new MakerCreditsModel();
+	// TODO Other possible models for 
+	// static MDbModel movies;
+	// static MDbModel series;
+	// static MakerCreditsModel actors;
+	// static MakerCreditsModel directors;
+	// static MakerCreditsModel producers;
+	
+	// Views
+	static SelectionView selectionView = new SelectionView();
+	// static EditMediaView editMediaView;
+	// static AddEditMakerView addMakerView;
+	// static AddMediaView addMediaView;
+	// static AddCastToMediaView addCastToMediaView;
+	
+	// ??? Maybe
+	// static MakerActionListView makerActionListView;
+	// static MediaActionListView mediaActionListView;
+	
 	public MediaDatabaseDriver() {
-		// TODO Auto-generated constructor stub
+		// Purposefully left empty
+		// Possibly not needed
+		mediaDatabaseController = new MediaDatabaseController();
 	}
 
-	private MediaDatabaseController mediaDatabaseController;
-	private MDbModel mdbModel;
-	private MakerCreditsModel creditsModel;
-	
-	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// TODO Check for accuracy/functionality
 
+		new MediaDatabaseDriver();
+		
+		// Linking models to controller
+		mediaDatabaseController.setMediaModel(mdbModel);
+		mediaDatabaseController.setMakerCreditsModel(makerCreditsModel);
+
+		// Linking views to controller
+		mediaDatabaseController.setSelectionView(selectionView);
+		//mediaDatabaseController.setAddCastToMediaView(addCastToMediaView);
+		//mediaDatabaseController.setAddMakerView(addMakerView);
+		//mediaDatabaseController.setAddMediaView(addMediaView);
+		//mediaDatabaseController.setEditMediaView(editMediaView);
 	}
-
 }

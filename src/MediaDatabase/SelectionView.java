@@ -32,7 +32,7 @@ import java.awt.event.WindowEvent;
  *
  */
 
-public class SelectionView extends JFrame {
+public class SelectionView extends JPanel {
 	/**
 	 * Generated Serial Version UID
 	 */
@@ -50,13 +50,14 @@ public class SelectionView extends JFrame {
 		JScrollPane mediaList = new JScrollPane();
 
 		// Create New JFrame
-		JFrame frame = new JFrame();
-
+		//JPanel frame = new JPanel();
+		JPanel frame = this;
+		
 		// Set the size of the frame.
-		frame.setSize(500, 500);
+		//frame.setSize(500, 500);
 
 		// Set the title of the frame.
-		frame.setTitle("Main Frame for Selection View from the SelectionView");
+		//frame.setTitle("Main Frame for Selection View from the SelectionView");
 
 		// Make the frame visible to the user
 		frame.setVisible(true);
@@ -264,13 +265,14 @@ public class SelectionView extends JFrame {
 		// Add the Split pane to main panel 2.
 		mainPanel2.add(splitMediaPane, BorderLayout.CENTER);
 
-		// pack();
+		//frame.pack();
+		frame.setVisible(true);
 
-		frame.addWindowListener(new WindowAdapter() {
+		/**frame.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				System.exit(0);
 			}
-		});
+		});*/
 	}
 	
 		public void actionPerformed(){
