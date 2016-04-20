@@ -264,7 +264,8 @@ public class SelectionView extends JFrame {
 		// Add the Split pane to main panel 2.
 		mainPanel2.add(splitMediaPane, BorderLayout.CENTER);
 
-		// pack();
+		pack();
+		setVisible(true);
 
 		frame.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {

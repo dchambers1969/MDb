@@ -49,38 +49,32 @@ import java.util.Set;
 
 public class MediaDatabaseController {
 
+	// TODO Maybe other five models instead of the current two?
+	// TODO Will need new setters
+	// private static MDbModel movies;
+	// private static MDbModel series;
+	// private static MakerCreditsModel actors;
+	// private static MakerCreditsModel directors;
+	// private static MakerCreditsModel producers;
+
 	// References to Media and Maker models
 	private MDbModel mediaModel;
 	private MakerCreditsModel makerModel;
 
 	// References to various views
 	private SelectionView selectionView;
-	
+
 	private EditMediaView editMediaView;
 	private AddEditMakerView addMakerView;
 	private AddMediaView addMediaView;
 	private AddCastToMediaView addCastToMediaView;
-	
+
 	private MakerActionListView makerActionListView;
 	private MediaActionListView mediaActionListView;
 
-	public MediaDatabaseController(MDbModel mediaModel, MakerCreditsModel makerModel,
-			SelectionView selectionView, EditMediaView editMediaView,
-			AddEditMakerView addMakerView, AddMediaView addMediaView,
-			AddCastToMediaView addCastToMediaView, MakerActionListView
-			makerActionListView, MediaActionListView mediaAcitonListView){
-		// Setting models
-		this.mediaModel = mediaModel;
-		this.makerModel = makerModel;
-		
-		// Setting views
-		this.selectionView = selectionView;
-		this.editMediaView = editMediaView;
-		this.addMakerView = addMakerView;
-		this.addMediaView = addMediaView;
-		this.addCastToMediaView = addCastToMediaView;
-		this.makerActionListView = makerActionListView;
-		this.mediaActionListView = mediaAcitonListView;
+	public MediaDatabaseController(){
+		// Purposefully left empty
+		// Not needed, using setters instead
 	}
 
 
@@ -115,15 +109,17 @@ public class MediaDatabaseController {
 	/**
 	 * @return the selectView
 	 */
-	public SelectionView getSelectView() {
+	public SelectionView getSelectionView() {
 		return selectionView;
 	}
 
 	/**
 	 * @param selectView the selectView to set
 	 */
-	public void setSelectView(SelectionView selectView) {
-		this.selectionView = selectView;
+	public void setSelectionView(SelectionView selectionView) {
+		this.selectionView = selectionView;
+		// TODO 
+		// add ActionListeners
 	}
 
 	/**
@@ -138,6 +134,8 @@ public class MediaDatabaseController {
 	 */
 	public void setMakerActionListView(MakerActionListView makerActionListView) {
 		this.makerActionListView = makerActionListView;
+		// TODO
+		// add ActionListeners
 	}
 
 	/**
@@ -152,6 +150,8 @@ public class MediaDatabaseController {
 	 */
 	public void setMediaActionListView(MediaActionListView mediaActionListView) {
 		this.mediaActionListView = mediaActionListView;
+		// TODO
+		// add ActionListeners
 	}
 
 	/**
@@ -166,6 +166,8 @@ public class MediaDatabaseController {
 	 */
 	public void setEditMediaView(EditMediaView editMediaView) {
 		this.editMediaView = editMediaView;
+		// TODO
+		// add ActionListeners
 	}
 
 	/**
@@ -180,6 +182,8 @@ public class MediaDatabaseController {
 	 */
 	public void setAddMakerView(AddEditMakerView addMakerView) {
 		this.addMakerView = addMakerView;
+		// TODO
+		// add ActionListeners
 	}
 
 	/**
@@ -194,6 +198,8 @@ public class MediaDatabaseController {
 	 */
 	public void setAddMediaView(AddMediaView addMediaView) {
 		this.addMediaView = addMediaView;
+		// TODO
+		// add ActionListeners
 	}
 
 	/**
@@ -208,5 +214,7 @@ public class MediaDatabaseController {
 	 */
 	public void setAddCastToMediaView(AddCastToMediaView addCastToMediaView) {
 		this.addCastToMediaView = addCastToMediaView;
+		// TODO
+		// add ActionListeners
 	}
 }
