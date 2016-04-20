@@ -47,6 +47,7 @@ public class AddEditMovieView extends JFrame implements ActionListener {
 		
 		// Create the text fields for series info (populate if an edit).
 		JTextField movieTitleField = new JTextField(movieToEdit.getTitle(),20);
+		movieTitleField.setHorizontalAlignment(JTextField.CENTER);
 		// Create label for the title field.
 		JLabel movieTitleLabel = new JLabel("Movie Title: ");
 		
@@ -60,6 +61,7 @@ public class AddEditMovieView extends JFrame implements ActionListener {
 		JFormattedTextField releaseYear = new JFormattedTextField(integerYearFormat);
 		// Set the value of the release year.
 		releaseYear.setValue(movieToEdit.getReleaseYear());
+		releaseYear.setHorizontalAlignment(JTextField.CENTER);
 		
 		releaseYear.setSize(10,10);
 		JLabel releaseYearLabel1 = new JLabel("Release Year: ");

@@ -54,9 +54,10 @@ public class AddEditEpisodeView extends JFrame implements ActionListener {
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		//Create the text fields for episode info (populate if an edit)
+		//Create the text fields for series info (populate if an edit
 	
 		JTextField seriesTitleField = new JTextField(seriesToUpdate.getTitle(),20);
+		seriesTitleField.setHorizontalAlignment(JTextField.CENTER);
 		JLabel seriesTitleLabel = new JLabel("TV Series Title: ");
 		
 		NumberFormat format = NumberFormat.getIntegerInstance();
@@ -68,6 +69,7 @@ public class AddEditEpisodeView extends JFrame implements ActionListener {
 		integerYearFormat.setCommitsOnValidEdit(true);
 		JFormattedTextField releaseYear = new JFormattedTextField(integerYearFormat);
 		releaseYear.setValue(seriesToUpdate.getReleaseYear());//seriesToEdit.getReleaseYear());
+		releaseYear.setHorizontalAlignment(JTextField.CENTER);
 		
 		releaseYear.setSize(10,10);
 		JLabel releaseYearLabel1 = new JLabel("Release Year: ");
@@ -80,6 +82,7 @@ public class AddEditEpisodeView extends JFrame implements ActionListener {
 			
 		
 		JFormattedTextField endingYear = new JFormattedTextField(integerYearFormat);
+		endingYear.setHorizontalAlignment(JTextField.CENTER);
 		JLabel endingYearLabel1 = new JLabel("Ending Year: ");
 		endingYear.setValue(seriesToUpdate.getEndingYear());
 		System.out.println(seriesToUpdate.getEndingYear());
@@ -140,10 +143,12 @@ public class AddEditEpisodeView extends JFrame implements ActionListener {
 		
 		//Episode Title
 		JTextField episodeTitle = new JTextField(episodeToEdit.getTitle(),20);
+		episodeTitle.setHorizontalAlignment(JTextField.CENTER);
 		JLabel episodeTitleLabel = new JLabel("Episode Title: ");
 		
 		//Episode Release Year
 		JFormattedTextField episodeReleaseYear = new JFormattedTextField(integerYearFormat);
+		episodeReleaseYear.setHorizontalAlignment(JTextField.CENTER);
 		JLabel episodeYearLabel1 = new JLabel("Episode Release Year: ");
 		episodeReleaseYear.setValue(episodeToEdit.getReleaseYear());
 		
@@ -269,32 +274,34 @@ public class AddEditEpisodeView extends JFrame implements ActionListener {
  		JPanel episodeDetails = new JPanel(new GridBagLayout());
  		c = new GridBagConstraints();
  		c.anchor = GridBagConstraints.CENTER;
-		c.fill = GridBagConstraints.FIRST_LINE_START;
+		c.fill = GridBagConstraints.CENTER;
 		c.gridx = 0;
 		c.gridy = 0;
 		c.ipadx = 20;
-		c.insets = new Insets(5,5,5,5);
+		c.insets = new Insets(5,65,5,5);
  		episodeDetails.add(seriesYear,c);
 		c.fill = GridBagConstraints.RELATIVE;
 		c.gridx = 1;
 		c.gridy = 0;
+		c.insets = new Insets(5,5,5,5);
 		episodeDetails.add(episodeNumber, c);
-		c.fill = GridBagConstraints.FIRST_LINE_START;
+		c.fill = GridBagConstraints.LAST_LINE_END;
 		c.gridx = 0;
 		c.gridy = 1;
 		c.ipadx = 80;
 		c.insets = new Insets(5,5,5,5);
 		episodeDetails.add(airDateLabel,c);
-		c.fill = GridBagConstraints.RELATIVE;
+		c.fill = GridBagConstraints.CENTER;
 		c.gridx = 1;
 		c.gridy = 1;
 		episodeDetails.add(episodeDate, c);
 		
-		c.fill = GridBagConstraints.FIRST_LINE_START;
+		c.fill = GridBagConstraints.LAST_LINE_END;
 		c.gridx = 0;
 		c.gridy = 2;
+		c.insets = new Insets(5,5,20,5);
 		episodeDetails.add(statusLabel,c);
-		c.fill = GridBagConstraints.RELATIVE;
+		c.fill = GridBagConstraints.CENTER;
 		c.gridx = 1;
 		c.gridy = 2;
 		c.ipadx = 60;

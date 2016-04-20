@@ -46,6 +46,7 @@ public class AddEditSeriesView extends JFrame implements ActionListener {
 		//Create the text fields for series info (populate if an edit
 	
 		JTextField seriesTitleField = new JTextField(seriesToEdit.getTitle(),20);
+		seriesTitleField.setHorizontalAlignment(JTextField.CENTER);
 		JLabel seriesTitleLabel = new JLabel("TV Series Title: ");
 		
 		NumberFormat format = NumberFormat.getIntegerInstance();
@@ -57,8 +58,10 @@ public class AddEditSeriesView extends JFrame implements ActionListener {
 		integerYearFormat.setCommitsOnValidEdit(true);
 		JFormattedTextField releaseYear = new JFormattedTextField(integerYearFormat);
 		releaseYear.setValue(seriesToEdit.getReleaseYear());//seriesToEdit.getReleaseYear());
+		releaseYear.setHorizontalAlignment(JTextField.CENTER);
 		
 		releaseYear.setSize(10,10);
+		
 		JLabel releaseYearLabel1 = new JLabel("Release Year: ");
 		JLabel releaseYearLabel2 = new JLabel("Valid release years are 1910 - 2018.");
 		
@@ -69,6 +72,7 @@ public class AddEditSeriesView extends JFrame implements ActionListener {
 			
 		
 		JFormattedTextField endingYear = new JFormattedTextField(integerYearFormat);
+		endingYear.setHorizontalAlignment(JTextField.CENTER);
 		JLabel endingYearLabel1 = new JLabel("Ending Year: ");
 		endingYear.setValue(seriesToEdit.getEndingYear());
 		System.out.println(seriesToEdit.getEndingYear());
