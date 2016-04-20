@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import javax.swing.BorderFactory;
@@ -53,7 +54,7 @@ public class AddEditEpisodeView extends JFrame implements ActionListener {
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		//Create the text fields for series info (populate if an edit
+		//Create the text fields for episode info (populate if an edit)
 	
 		JTextField seriesTitleField = new JTextField(seriesToUpdate.getTitle(),20);
 		JLabel seriesTitleLabel = new JLabel("TV Series Title: ");
@@ -147,7 +148,7 @@ public class AddEditEpisodeView extends JFrame implements ActionListener {
 		episodeReleaseYear.setValue(episodeToEdit.getReleaseYear());
 		
 		episodeReleaseYear.setSize(10,10);
-		JLabel episodeReleaseYearLabel2 = new JLabel("Valid entries for episode year are to be within series release - ending window or blank.");
+		JLabel episodeReleaseYearLabel2 = new JLabel("Valid entries for episode year are to be within series release/ending window or blank.");
 		
 		
 		//Episode Year Run
@@ -158,6 +159,7 @@ public class AddEditEpisodeView extends JFrame implements ActionListener {
 		integerSeriesYearFormat.setCommitsOnValidEdit(true);
 		JFormattedTextField seriesYear = new JFormattedTextField(integerSeriesYearFormat);
 		seriesYear.setValue(episodeToEdit.getSeriesYear());
+		seriesYear.setHorizontalAlignment(JTextField.CENTER);
 		
 		JLabel broadcastInfoLabel = new JLabel("                          Episode Broadcast Details");
 		JLabel seriesYearEpisodeLabel = new JLabel("                        Series Year (1-50)                     Episode # (1-365)");
@@ -170,22 +172,49 @@ public class AddEditEpisodeView extends JFrame implements ActionListener {
 		integerSeriesYearFormat.setCommitsOnValidEdit(true);
 		JFormattedTextField episodeNumber = new JFormattedTextField(integerSeriesYearFormat);
 		episodeNumber.setValue(episodeToEdit.getEpisodeNumber());
+		episodeNumber.setHorizontalAlignment(JTextField.CENTER);
 		
 		
 		
 		//Episode Airing Date
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
 		JFormattedTextField episodeDate = new JFormattedTextField(dateFormat);
+		episodeDate.setHorizontalAlignment(JTextField.CENTER);
 		
 		JLabel airDateLabel = new JLabel("Episode Air Date (yyyy-mm-dd): ");
 		
+		String dateString = "";
+		
+		if(episodeToEdit.getEpisodeDate()!=null){
+			dateString += episodeToEdit.getEpisodeDate().getMonth();
+			dateString += "-";
+			dateString += episodeToEdit.getEpisodeDate().getDay();
+			dateString += "-";
+			dateString += episodeToEdit.getEpisodeDate().getYear();
+			;
+			try {
+				episodeDate.setValue(new SimpleDateFormat("MM-dd-yyyy").parse(dateString));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
 		String[] statusChoices = {"UNSPECIFIED", "SUSPENDED", "NO STATUS"};
 		JList statusJList = new JList(statusChoices);
 		JScrollPane statusPane = new JScrollPane(statusJList,ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		JLabel statusLabel = new JLabel("Special Status :");
 		statusJList.setPreferredSize(new Dimension(20,3));
-		
+		if(episodeToEdit.getStatus()!=null){
+			if(episodeToEdit.getStatus().equalsIgnoreCase(statusChoices[0]))
+				statusJList.setSelectedIndex(0);
+			else if(episodeToEdit.getStatus().equalsIgnoreCase(statusChoices[1]))
+				statusJList.setSelectedIndex(1);
+			else
+				statusJList.setSelectedIndex(2);
+		}
+		else
+			statusJList.setSelectedIndex(2);
 		
 		JPanel episodeInfoPanel = new JPanel(new GridBagLayout());
 		JPanel episodePanel = new JPanel(new BorderLayout());

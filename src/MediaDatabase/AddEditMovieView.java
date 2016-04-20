@@ -26,7 +26,7 @@ import javax.swing.text.NumberFormatter;
 public class AddEditMovieView extends JFrame implements ActionListener {
 
 	public AddEditMovieView(Movie movieToEdit){
-				
+		
 		// Create New JFrame
 		JFrame frame = new JFrame();
 
@@ -63,7 +63,7 @@ public class AddEditMovieView extends JFrame implements ActionListener {
 		
 		releaseYear.setSize(10,10);
 		JLabel releaseYearLabel1 = new JLabel("Release Year: ");
-		JLabel releaseYearLabel2 = new JLabel("Valid release years are 1910 - 2018.");
+		JLabel releaseYearLabel2 = new JLabel("Valid years are 1910 - 2018 or leave blank for unknown.");
 		// Set the label for the radio buttons
 		JLabel radioSelectionLabel = new JLabel("Please select one of the following: ");
 		
@@ -94,8 +94,15 @@ public class AddEditMovieView extends JFrame implements ActionListener {
 		movieFormatGroup.add(theater);
 		movieFormatGroup.add(television);
 		movieFormatGroup.add(video);
+		if(movieToEdit.getReleaseType()!=null){
+			if(movieToEdit.getReleaseType() ==ReleaseType.SCREEN)
+				movieFormatGroup.setSelected(theater.getModel(), true);
+			else if(movieToEdit.getReleaseType() == ReleaseType.VIDEO)
+				movieFormatGroup.setSelected(video.getModel(), true);
+			else
+				movieFormatGroup.setSelected(television.getModel(), true);
 		
-		
+		}
 		// Add the radio buttons to the panel
 		c.fill = GridBagConstraints.LINE_START;
 		c.anchor = GridBagConstraints.LINE_START;
@@ -165,7 +172,7 @@ public class AddEditMovieView extends JFrame implements ActionListener {
 		c.gridx = 0;
 		c.gridy = 1;
 		c.ipadx = 0;
-		c.anchor = GridBagConstraints.WEST;
+		c.anchor = GridBagConstraints.CENTER;
 		warningPanel.add(radioSelectionLabel,c);
  
 		// Add Cancel and Submit buttons to the 
