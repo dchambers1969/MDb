@@ -6,7 +6,6 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.NumberFormat;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
@@ -22,7 +21,7 @@ public class AddEditSeriesView extends JFrame implements ActionListener {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -772341493150922192L;
+	private static final long serialVersionUID = 1L;
 
 	public AddEditSeriesView(TVSeries seriesToEdit){
 				
@@ -46,7 +45,7 @@ public class AddEditSeriesView extends JFrame implements ActionListener {
 		
 		//Create the text fields for series info (populate if an edit
 	
-		JTextField seriesTitleField = new JTextField(seriesToEdit.getTitle(),30);
+		JTextField seriesTitleField = new JTextField(seriesToEdit.getTitle(),20);
 		JLabel seriesTitleLabel = new JLabel("TV Series Title: ");
 		
 		NumberFormat format = NumberFormat.getIntegerInstance();
@@ -90,7 +89,6 @@ public class AddEditSeriesView extends JFrame implements ActionListener {
 		c.fill = GridBagConstraints.RELATIVE;
 		c.gridx = 1;
 		c.gridy = 0;
-		c.ipadx = 200;
 		mainPanel2.add(seriesTitleField, c);
 		c.fill = GridBagConstraints.FIRST_LINE_START;
 		c.gridx = 0;
@@ -126,24 +124,18 @@ public class AddEditSeriesView extends JFrame implements ActionListener {
 		
 		
 		// Add Cancel and Submit buttons to the 
+		
 		JButton cancel = new JButton("Cancel");
 		cancel.addActionListener(this);
 		cancel.setActionCommand("cancel");
 		JButton submit = new JButton("Submit");
-		JPanel buttonPanel = new JPanel(new GridBagLayout());
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.anchor = GridBagConstraints.LAST_LINE_END;
-		c.gridwidth = 2;
-		c.gridheight = 1;
-		c.gridx = 0;
-		c.gridy = 0;
-		c.insets = new Insets(5,200,5,5);
-		buttonPanel.add(cancel,c);
+		JPanel buttonPanel = new JPanel(new BorderLayout());
+		JPanel buttonSubPanel = new JPanel();
 		
-		c.fill = GridBagConstraints.RELATIVE;
-		c.gridx = 2;
-		c.insets = new Insets(5,5,5,5);
-		buttonPanel.add(submit, c);
+		buttonSubPanel.add(cancel);
+		buttonSubPanel.add(submit);
+		buttonPanel.add(buttonSubPanel, BorderLayout.EAST);
+		
 		submit.addActionListener(this);
 		submit.setActionCommand("submit");
 		// This is the backup panel that contains all other elements of this
@@ -158,7 +150,7 @@ public class AddEditSeriesView extends JFrame implements ActionListener {
 		
 		mainPanel1.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
 		frame.add(mainPanel1);
-		
+		frame.pack();
 	}
 
 	@Override
