@@ -14,6 +14,8 @@
 
 package MediaDatabase;
 
+import java.awt.BorderLayout;
+import java.awt.Toolkit;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
@@ -29,6 +31,9 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Set;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 /**
  * Project #4
@@ -47,7 +52,7 @@ import java.util.Set;
  * @version 1.0
  */
 
-public class MediaDatabaseController {
+public class MediaDatabaseController extends JFrame {
 
 	// TODO Maybe other five models instead of the current two?
 	// TODO Will need new setters
@@ -71,6 +76,10 @@ public class MediaDatabaseController {
 
 	private MakerActionListView makerActionListView;
 	private MediaActionListView mediaActionListView;
+	
+	// Main frame and panel to aggregate various components
+	private static JFrame mainFrame = new JFrame();
+	private static JPanel mainPanel = new JPanel();
 
 	public MediaDatabaseController(){
 		// Purposefully left empty
@@ -118,6 +127,13 @@ public class MediaDatabaseController {
 	 */
 	public void setSelectionView(SelectionView selectionView) {
 		this.selectionView = selectionView;
+
+		mainPanel.add(this.selectionView, BorderLayout.WEST);
+		mainFrame.add(mainPanel);
+		mainFrame.pack();
+		mainFrame.setVisible(true);
+		//mainFrame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
+		mainFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		// TODO 
 		// add ActionListeners
 	}

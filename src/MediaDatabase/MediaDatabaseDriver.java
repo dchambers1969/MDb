@@ -1,7 +1,5 @@
 package MediaDatabase;
 
-import javax.swing.JFrame;
-
 public class MediaDatabaseDriver {
 	
 	// Controller
@@ -18,7 +16,7 @@ public class MediaDatabaseDriver {
 	// static MakerCreditsModel producers;
 	
 	// Views
-	static SelectionView selectionView;
+	static SelectionView selectionView = new SelectionView();
 	// static EditMediaView editMediaView;
 	// static AddEditMakerView addMakerView;
 	// static AddMediaView addMediaView;
@@ -49,7 +47,5 @@ public class MediaDatabaseDriver {
 		//mediaDatabaseController.setAddMakerView(addMakerView);
 		//mediaDatabaseController.setAddMediaView(addMediaView);
 		//mediaDatabaseController.setEditMediaView(editMediaView);
-		selectionView = new SelectionView();
 	}
-
 }
