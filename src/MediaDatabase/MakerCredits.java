@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 //import java.util.Scanner;
 import java.util.Set;
@@ -676,5 +677,27 @@ public class MakerCredits implements Serializable {
 		for (MediaMaker maker: makers)
 			return maker.getMakerName();
 		return null;
+	}
+	public HashSet<Media> getAllCredits(MediaMaker maker, LinkedHashMap<Actor,ArrayList<Media>>,
+			LinkedHashMap<Director>,ArrayList<Media>, LinkedHashMap<Producer>){
+		LinkedHashMap<MediaMaker maker, ArrayList<Media>> monsterHas
+		HashSet<Media> masterCreditsList = new HashSet<Media>();
+		
+		for(this.)
+		if(maker.getClass()==(new Actor().getClass())){
+			
+		}
+		else if(maker.getClass()==(new Director().getClass())){
+			
+		}
+		else if(maker.getClass()==(new Director().getClass())){
+			
+		}
+		else{
+			
+		}
+			
+		return masterCreditsList;
+		
 	}
 }
