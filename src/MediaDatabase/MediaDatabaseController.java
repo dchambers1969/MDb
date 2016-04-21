@@ -19,6 +19,8 @@ package MediaDatabase;
 
 import java.awt.BorderLayout;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
@@ -94,7 +96,8 @@ public class MediaDatabaseController extends JFrame {
 	 * @return the mdbModel
 	 */
 	public MDbModel getMediaModel() {
-		return media;
+		// TODO
+		return movies;
 	}
 
 	/**
@@ -109,7 +112,8 @@ public class MediaDatabaseController extends JFrame {
 	 * @return the makerCreditsModel
 	 */
 	public MakerCreditsModel getMakerCreditsModel() {
-		return makers;
+		// TODO
+		return actors;
 	}
 
 	/**
@@ -147,46 +151,207 @@ public class MediaDatabaseController extends JFrame {
 		// TODO Auto-generated method stub
 		this.menuView = menuView;
 
-		this.menuView.addFileImportBinaryActionListener(new ImportBinaryListener));
-		this.menuView.addFileImportTextAllActionListener(new ImportTextAllListener));
-		this.menuView.addFileImportTextMoviesActionListener(new ImportTextMoviesListener));
-		this.menuView.addFileImportTextSeriesActionListener(new ImportTextSeriesListener));
-		this.menuView.addFileImportTextActorsActionListener(new ImportTextActorsListener));
-		this.menuView.addFileImportTextDirectorsActionListener(new ImportTextDirectorsListener));
-		this.menuView.addFileImportTextProducersActionListener(new ImportTextProducersListener));
+		this.menuView.addFileImportBinaryActionListener(new ImportBinaryListener());
+		this.menuView.addFileImportTextAllActionListener(new ImportTextAllListener());
+		this.menuView.addFileImportTextMoviesActionListener(new ImportTextMoviesListener());
+		this.menuView.addFileImportTextSeriesActionListener(new ImportTextSeriesListener());
+		this.menuView.addFileImportTextActorsActionListener(new ImportTextActorsListener());
+		this.menuView.addFileImportTextDirectorsActionListener(new ImportTextDirectorsListener());
+		this.menuView.addFileImportTextProducersActionListener(new ImportTextProducersListener());
 
-		this.menuView.addFileExportBinaryActionListener(new )
-		this.menuView.addFileExportTextAllActionListener(new )
-		this.menuView.addFileExportTextMoviesActionListener(new ));
-		this.menuView.addFileExportTextSeriesActionListener(new ));
-		this.menuView.addFileExportTextActorsActionListener(new ));
-		this.menuView.addFileExportTextDirectorsActionListener(new ));
-		this.menuView.addFileExportTextProducersActionListener(new ));
+		this.menuView.addFileExportBinaryActionListener(new ExportBinaryListener());
+		this.menuView.addFileExportTextAllActionListener(new ExportTextAllListener());
+		this.menuView.addFileExportTextMoviesActionListener(new ExportTextMoviesListener());
+		this.menuView.addFileExportTextSeriesActionListener(new ExportTextSeriesListener());
+		this.menuView.addFileExportTextActorsActionListener(new ExportTextActorsListener());
+		this.menuView.addFileExportTextDirectorsActionListener(new ExportTextDirectorsListener());
+		this.menuView.addFileExportTextProducersActionListener(new ExportTextProducersListener());
 
-		this.menuView.addFileLoadFavoritesActionListener(new ));
-		this.menuView.addFileSaveToFavoritesActionListener(new ));
+		this.menuView.addFileLoadFavoritesActionListener(new LoadFavListener());
+		this.menuView.addFileSaveToFavoritesActionListener(new SaveFavListener());
 
-		this.menuView.addSelectionEditsClearSelectionActionListener(new ));
-		this.menuView.addSelectionEditsClearAllActionListener(new ));
-		this.menuView.addSelectionEditsDeleteActionListener(new ));
-		this.menuView.addSelectionEditsAddActionListener(new ));
-		this.menuView.addSelectionEditsEditActionListener(new ));
+		this.menuView.addSelectionEditsClearAllActionListener(new EditsClearAllListener());
+		this.menuView.addSelectionEditsDeleteActionListener(new EditsDeleteListener());
+		this.menuView.addSelectionEditsEditActionListener(new EditsEditListener());
 
-		this.menuView.addDatabaseEditsAddEditEpisodeActionListener(new ));
-		this.menuView.addDatabaseEditsAddEditSeriesActionListener(new ));
-		this.menuView.addDatabaseEditsAddEditMovieActionListener(new ));
-		this.menuView.addDatabaseEditsAddEditMakerActionListener(new ));
-		this.menuView.addDatabaseEditsAddCreditsToMakerActionListener(new ));
+		this.menuView.addDatabaseEditsAddEditEpisodeActionListener(new AddEditEpisodeListener());
+		this.menuView.addDatabaseEditsAddEditSeriesActionListener(new AddEditSeriesListener());
+		this.menuView.addDatabaseEditsAddEditMovieActionListener(new AddEditMovieListener());
+		this.menuView.addDatabaseEditsAddEditMakerActionListener(new AddEditMakerListener());
+		this.menuView.addDatabaseEditsAddCreditsToMakerActionListener(new AddCreditsListener());
 
-		this.menuView.addDisplayPieChartActionListener(new ));
-		this.menuView.addDisplayHistogramActionListener(new ));
-		this.menuView.addDisplayClearDisplayActionListener(new ));
+		this.menuView.addDisplayPieChartActionListener(new DisplayPieChartListener());
+		this.menuView.addDisplayHistogramActionListener(new DisplayHistogramListener());
+		this.menuView.addDisplayClearDisplayActionListener(new DisplayClearListener());
 
 		mainPanel.add(this.menuView,BorderLayout.NORTH);
 		mainFrame.add(mainPanel);
 		mainFrame.pack();
 		mainFrame.setVisible(true);
 		mainFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+	}
+	
+	class ImportBinaryListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+		}
+	}
+	class ImportTextAllListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+		}
+	}
+	class ImportTextMoviesListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+		}
+	}
+	class ImportTextSeriesListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+		}
+	}
+	class ImportTextActorsListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+		}
+	}
+	class ImportTextDirectorsListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+		}
+	}
+	class ImportTextProducersListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+		}
+	}
+	class ExportBinaryListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+		}
+	}
+	class ExportTextAllListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+		}
+	}
+	class ExportTextMoviesListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+		}
+	}
+	class ExportTextSeriesListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+		}
+	}
+	class ExportTextActorsListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+		}
+	}
+	class ExportTextDirectorsListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+		}
+	}
+	class ExportTextProducersListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+		}
+	}
+	class LoadFavListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+		}
+	}
+	class SaveFavListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+		}
+	}
+	class EditsClearAllListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+		}
+	}
+	class EditsDeleteListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+		}
+	}
+	class EditsEditListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+		}
+	}
+	class AddEditEpisodeListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+		}
+	}
+	class AddEditSeriesListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+		}
+	}
+	class AddEditMovieListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+		}
+	}
+	class AddEditMakerListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+		}
+	}
+	class AddCreditsListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+		}
+	}
+	class DisplayPieChartListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+		}
+	}
+	class DisplayHistogramListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+		}
+	}
+	class DisplayClearListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+		}
 	}
 
 	public void setMasterListViews(MasterMakerListView makerList, MasterMediaListView mediaList) {
