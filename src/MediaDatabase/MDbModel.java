@@ -165,7 +165,18 @@ public class MDbModel extends MDb{
 	public String toString(){
 		return super.toString();
 	}	// TODO Auto-generated constructor stub
-
+	
+	/**
+	 * 
+	 * @param media
+	 * @param movies
+	 * @param series
+	 * @return
+	 */
+	public ArrayList<Media> getAllMedia(Media media, MDb movies, MDb series){
+		return super.getAllMedia(media, movies, series);
+	}
+		
 	private void processEvent(ActionEvent actionEvent) {
 	// TODO Auto-generated method stub
 	}

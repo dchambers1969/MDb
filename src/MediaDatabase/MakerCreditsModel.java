@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Set;
 
@@ -113,5 +114,11 @@ public class MakerCreditsModel extends MakerCredits {
 	 */
 	public String getName() {
 		return super.getName();
+	}
+	
+	public HashSet<Media> getAllCredits(MediaMaker maker, LinkedHashMap<Actor,ArrayList<Media>> actorCredits,
+			LinkedHashMap<Director,ArrayList<Media>> directorCredits, 
+			LinkedHashMap<Producer,ArrayList<Media>> producerCredits){
+		return super.getAllCredits(maker, actorCredits, directorCredits, producerCredits);
 	}
 }

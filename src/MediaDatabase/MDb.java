@@ -10,6 +10,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList; //import ArrayList to use as MDb private variable
 import java.util.Collections; //import Collections to Sort ArrayList of media
 import java.util.Comparator;// import Comparator to build comparator for Media
+import java.util.HashSet;
 //import java.util.Scanner; //import to allow user input through console
 
 
@@ -658,5 +659,34 @@ public class MDb implements Serializable{
 		for(Media m: media)
 			str += m.getTitle() + ": " + m.getReleaseYear() + "\n";
 		return str;
+	}
+
+	/**
+	 * 
+	 * @param media
+	 * @param movies
+	 * @param series
+	 * @return
+	 */
+	public ArrayList<Media> getAllMedia(Media media, MDb movies, MDb series){
+		
+		ArrayList<Media> masterMediaList = new ArrayList<Media>();
+		ArrayList<Episode> tempMedia = new ArrayList<Episode>();
+		
+		if(media.getClass()==(new Movie().getClass())){
+			masterMediaList = movies.getMedia();
+		}
+		if(media.getClass()==(new TVSeries().getClass())){
+			masterMediaList = series.getMedia();
+		}
+		if(media.getClass()==(new Episode().getClass())){
+			for(Media m: series.getMedia()){
+				tempMedia = ((TVSeries)m).getEpisodes();
+				for(Episode e: tempMedia){
+					masterMediaList.add(e);
+				}
+			}
+		}
+		return masterMediaList;
 	}
 }

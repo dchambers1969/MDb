@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -678,26 +679,44 @@ public class MakerCredits implements Serializable {
 			return maker.getMakerName();
 		return null;
 	}
-	public HashSet<Media> getAllCredits(MediaMaker maker, LinkedHashMap<Actor,ArrayList<Media>>,
-			LinkedHashMap<Director>,ArrayList<Media>, LinkedHashMap<Producer>){
-		LinkedHashMap<MediaMaker maker, ArrayList<Media>> monsterHas
-		HashSet<Media> masterCreditsList = new HashSet<Media>();
+	
+	/**
+	 * 
+	 * @param maker
+	 * @param actorCredits
+	 * @param directorCredits
+	 * @param producerCredits
+	 * @return HashSet<Media>  masterCreditsList
+	 */
+	public HashSet<Media> getAllCredits(MediaMaker maker, LinkedHashMap<Actor,ArrayList<Media>> actorCredits,
+			LinkedHashMap<Director,ArrayList<Media>> directorCredits, LinkedHashMap<Producer,ArrayList<Media>> producerCredits){
 		
-		for(this.)
+		LinkedHashMap<MediaMaker, ArrayList<Media>> monsterHash = new LinkedHashMap<MediaMaker, ArrayList<Media>>();
+	
 		if(maker.getClass()==(new Actor().getClass())){
-			
+			monsterHash.putAll(actorCredits);
 		}
 		else if(maker.getClass()==(new Director().getClass())){
-			
+			monsterHash.putAll(directorCredits);
 		}
 		else if(maker.getClass()==(new Director().getClass())){
-			
+			monsterHash.putAll(producerCredits);
 		}
 		else{
-			
+			monsterHash.putAll(actorCredits);
+			monsterHash.putAll(directorCredits);
+			monsterHash.putAll(producerCredits);
 		}
-			
-		return masterCreditsList;
 		
+		HashSet<Media> masterCreditsList = new HashSet<Media>();
+		Set<MediaMaker> makerList = monsterHash.keySet();
+		MediaMaker[] makerArray = new MediaMaker[makerList.size()];
+		makerList.toArray(makerArray);
+		
+		for(MediaMaker m: makerArray){
+			masterCreditsList.addAll(monsterHash.get(m));
+		}
+	
+		return masterCreditsList;
 	}
 }
