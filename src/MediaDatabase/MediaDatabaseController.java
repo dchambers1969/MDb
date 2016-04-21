@@ -71,7 +71,7 @@ public class MediaDatabaseController extends JFrame {
 	
 	// Main frame and panel to aggregate various components
 	private static JFrame mainFrame = new JFrame();
-	private static JPanel mainPanel = new JPanel();
+	private static JPanel mainPanel = new JPanel(new BorderLayout());
 
 	
 	
@@ -128,7 +128,7 @@ public class MediaDatabaseController extends JFrame {
 	public void setSelectionView(SelectionView selectionView) {
 		this.selectionView = selectionView;
 
-		mainPanel.add(this.selectionView);
+		mainPanel.add(this.selectionView,BorderLayout.WEST);
 		mainFrame.add(mainPanel);
 		mainFrame.pack();
 		mainFrame.setVisible(true);
@@ -140,7 +140,7 @@ public class MediaDatabaseController extends JFrame {
 	public void setMenuView(MenuView menuView) {
 		// TODO Auto-generated method stub
 		this.menuView = menuView;
-		mainPanel.add(this.menuView);
+		mainPanel.add(this.menuView,BorderLayout.NORTH);
 		mainFrame.add(mainPanel);
 		mainFrame.pack();
 		mainFrame.setVisible(true);
@@ -152,9 +152,13 @@ public class MediaDatabaseController extends JFrame {
 		this.makerList = makerList;
 		this.mediaList = mediaList;
 		
-		JSplitPane splitMediaPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, this.makerList, this.mediaList);
+		JSplitPane splitMediaPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+		splitMediaPane.setRightComponent(this.makerList);
+		splitMediaPane.setLeftComponent(this.mediaList);
+		splitMediaPane.setSize(Toolkit.getDefaultToolkit().getScreenSize().width/3, Toolkit.getDefaultToolkit().getScreenSize().height/2);
+		splitMediaPane.setVisible(true);
 
-		mainPanel.add(splitMediaPane);
+		mainPanel.add(splitMediaPane,BorderLayout.CENTER);
 		mainFrame.add(mainPanel);
 		mainFrame.pack();
 		mainFrame.setVisible(true);
