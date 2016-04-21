@@ -676,15 +676,23 @@ public class MDb implements Serializable{
 		if(media.getClass()==(new Movie().getClass())){
 			masterMediaList = movies.getMedia();
 		}
-		if(media.getClass()==(new TVSeries().getClass())){
+		else if(media.getClass()==(new TVSeries().getClass())){
 			masterMediaList = series.getMedia();
 		}
-		if(media.getClass()==(new Episode().getClass())){
+		else if(media.getClass()==(new Episode().getClass())){
 			for(Media m: series.getMedia()){
 				tempMedia = ((TVSeries)m).getEpisodes();
 				for(Episode e: tempMedia){
 					masterMediaList.add(e);
 				}
+			}
+		}
+		else{
+			masterMediaList.addAll(movies.getMedia());
+			masterMediaList.addAll(series.getMedia());
+			for(Media m: series.getMedia()){
+				for(Episode e: ((TVSeries)m).getEpisodes())
+					masterMediaList.add(e);				
 			}
 		}
 		return masterMediaList;
