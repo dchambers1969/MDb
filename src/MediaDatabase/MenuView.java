@@ -26,6 +26,7 @@ public class MenuView extends JMenuBar {
 		// Set the selection edit as disabled.
 		bulkEdit.setEnabled(false);
 		JMenu display = new JMenu("Display");
+		display.setEnabled(false);
 		JMenu space1 = new JMenu("    "); // set selectable or visible to false
 		space1.setEnabled(false);
 		JMenu space2 = new JMenu("    ");
@@ -104,10 +105,12 @@ public class MenuView extends JMenuBar {
 		// Create the Display sub menu items
 		JMenuItem pie = new JMenuItem("Pie Chart");
 		JMenuItem chart = new JMenuItem("Histogram");
+		JMenuItem clearDisplay = new JMenuItem("Clear");
 
 		// Add to the Display submenu.
 		display.add(pie);
 		display.add(chart);
+		display.add(clearDisplay);
 
 		// Create the Edit sub menu items.
 		JMenuItem clearSelection = new JMenuItem("Clear Selection");
@@ -123,11 +126,19 @@ public class MenuView extends JMenuBar {
 		selectionEdit.add(add);
 		selectionEdit.add(editEntry);
 
+		// Create the Bulk Edit sub menu items.
+		JMenuItem addEditEpisode = new JMenuItem("Add/Edit Episode");
+		JMenuItem addEditSeries = new JMenuItem("Add/Edit Series");
+		JMenuItem addEditMovie = new JMenuItem("Add/Edit Movie");
+		JMenuItem addEditMaker = new JMenuItem("Add/Edit Maker");
+		JMenuItem addCredits = new JMenuItem("Add Credits to Maker");
+		
+		
 		// Add the Bulk Edit sub menu items.
-		selectionEdit.add(clearSelection);
-		selectionEdit.add(clearAll);
-		selectionEdit.add(delete);
-		selectionEdit.add(add);
-		selectionEdit.add(editEntry);
+		bulkEdit.add(addEditEpisode);
+		bulkEdit.add(addEditSeries);
+		bulkEdit.add(addEditMovie);
+		bulkEdit.add(addEditMaker);
+		bulkEdit.add(addCredits);
 	}
 }

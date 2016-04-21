@@ -1,6 +1,6 @@
-	/**
+/**
 	Modal/temp views to be called in methods
-	
+
 	static EditMediaView editMediaView;
 	static AddEditMakerView addMakerView;
 	static AddMediaView addMediaView;
@@ -12,7 +12,7 @@
 	static SelectSeriesView;
 	static SelectMakerView;// Selection and other views need addListener methods
 
-	*/
+ */
 
 
 package MediaDatabase;
@@ -59,24 +59,27 @@ import javax.swing.JSplitPane;
 public class MediaDatabaseController extends JFrame {
 
 	// References to models	
-	private MDbModel media;
-	private MakerCreditsModel makers;
+	private MDbModel movies;
+	private MDbModel series;
+	private MakerCreditsModel actors;
+	private MakerCreditsModel directors;
+	private MakerCreditsModel producers;
 
 	// References to various views
 	private SelectionView selectionView;
 	private MenuView menuView = new MenuView();
 	private MasterMakerListView makerList = new MasterMakerListView();
 	private MasterMediaListView mediaList = new MasterMediaListView();
-	
-	
+
+
 	// Main frame and panel to aggregate various components
 	private static JFrame mainFrame = new JFrame();
 	private static JPanel mainPanel = new JPanel(new BorderLayout());
 
-	
-	
-	
-	
+
+
+
+
 	public MediaDatabaseController(){
 		// Purposefully left empty
 		// Not needed, using setters insteadmainFrame.add(mainPanel);
@@ -97,8 +100,9 @@ public class MediaDatabaseController extends JFrame {
 	/**
 	 * @param mdbModel the mdbModel to set
 	 */
-	public void setMediaModel(MDbModel mediaModel) {
-		this.media = mediaModel;
+	public void setMediaModel(MDbModel movies, MDbModel series) {
+		this.movies = movies;
+		this.series = series;
 	}
 
 	/**
@@ -111,8 +115,10 @@ public class MediaDatabaseController extends JFrame {
 	/**
 	 * @param makerCreditsModel the makerCreditsModel to set
 	 */
-	public void setMakerCreditsModel(MakerCreditsModel makerCreditsModel) {
-		this.makers = makerCreditsModel;
+	public void setMakerCreditsModel(MakerCreditsModel actors, MakerCreditsModel directors, MakerCreditsModel producers) {
+		this.actors = actors;
+		this.directors = directors;
+		this.producers = producers;
 	}
 
 	/**
@@ -140,6 +146,42 @@ public class MediaDatabaseController extends JFrame {
 	public void setMenuView(MenuView menuView) {
 		// TODO Auto-generated method stub
 		this.menuView = menuView;
+
+		this.menuView.addFileImportBinaryActionListener(new ImportBinaryListener));
+		this.menuView.addFileImportTextAllActionListener(new ImportTextAllListener));
+		this.menuView.addFileImportTextMoviesActionListener(new ImportTextMoviesListener));
+		this.menuView.addFileImportTextSeriesActionListener(new ImportTextSeriesListener));
+		this.menuView.addFileImportTextActorsActionListener(new ImportTextActorsListener));
+		this.menuView.addFileImportTextDirectorsActionListener(new ImportTextDirectorsListener));
+		this.menuView.addFileImportTextProducersActionListener(new ImportTextProducersListener));
+
+		this.menuView.addFileExportBinaryActionListener(new )
+		this.menuView.addFileExportTextAllActionListener(new )
+		this.menuView.addFileExportTextMoviesActionListener(new ));
+		this.menuView.addFileExportTextSeriesActionListener(new ));
+		this.menuView.addFileExportTextActorsActionListener(new ));
+		this.menuView.addFileExportTextDirectorsActionListener(new ));
+		this.menuView.addFileExportTextProducersActionListener(new ));
+
+		this.menuView.addFileLoadFavoritesActionListener(new ));
+		this.menuView.addFileSaveToFavoritesActionListener(new ));
+
+		this.menuView.addSelectionEditsClearSelectionActionListener(new ));
+		this.menuView.addSelectionEditsClearAllActionListener(new ));
+		this.menuView.addSelectionEditsDeleteActionListener(new ));
+		this.menuView.addSelectionEditsAddActionListener(new ));
+		this.menuView.addSelectionEditsEditActionListener(new ));
+
+		this.menuView.addDatabaseEditsAddEditEpisodeActionListener(new ));
+		this.menuView.addDatabaseEditsAddEditSeriesActionListener(new ));
+		this.menuView.addDatabaseEditsAddEditMovieActionListener(new ));
+		this.menuView.addDatabaseEditsAddEditMakerActionListener(new ));
+		this.menuView.addDatabaseEditsAddCreditsToMakerActionListener(new ));
+
+		this.menuView.addDisplayPieChartActionListener(new ));
+		this.menuView.addDisplayHistogramActionListener(new ));
+		this.menuView.addDisplayClearDisplayActionListener(new ));
+
 		mainPanel.add(this.menuView,BorderLayout.NORTH);
 		mainFrame.add(mainPanel);
 		mainFrame.pack();
@@ -151,7 +193,7 @@ public class MediaDatabaseController extends JFrame {
 		// TODO Auto-generated method stub
 		this.makerList = makerList;
 		this.mediaList = mediaList;
-		
+
 		JSplitPane splitMediaPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		splitMediaPane.setRightComponent(this.makerList);
 		splitMediaPane.setLeftComponent(this.mediaList);
