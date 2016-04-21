@@ -23,6 +23,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
@@ -37,6 +38,7 @@ import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Set;
 
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
@@ -184,6 +186,13 @@ public class MediaDatabaseController extends JFrame {
 		this.menuView.addDisplayHistogramActionListener(new DisplayHistogramListener());
 		this.menuView.addDisplayClearDisplayActionListener(new DisplayClearListener());
 
+		this.menuView.setSaveToFavorites(false);
+		this.menuView.setExport(false);
+		this.menuView.setSelectionEdits(false);
+		this.menuView.setDatabaseEdits(false);
+		this.menuView.setDisplayClear(false);
+		this.menuView.setDisplay(false);
+		
 		mainPanel.add(this.menuView,BorderLayout.NORTH);
 		mainFrame.add(mainPanel);
 		mainFrame.pack();
@@ -194,7 +203,10 @@ public class MediaDatabaseController extends JFrame {
 	class ImportBinaryListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
+			System.out.println("Import Binary");
+			JFileChooser jfile = new JFileChooser();
+			jfile.showOpenDialog(mainFrame);
+			File file = jfile.getSelectedFile();
 		}
 	}
 	class ImportTextAllListener implements ActionListener {
