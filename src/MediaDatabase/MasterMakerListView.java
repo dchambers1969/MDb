@@ -40,7 +40,11 @@ public class MasterMakerListView extends JScrollPane implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO
-	}
-
+		if(e.getActionCommand().equals("submit")){
+			
+		}
+		else {
+			
+		}	
+	}	
 }

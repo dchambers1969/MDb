@@ -27,35 +27,22 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.text.DateFormatter;
 import javax.swing.text.NumberFormatter;
 
-public class AddEditEpisodeView extends JFrame implements ActionListener {
+public class AddEditEpisodeView extends JPanel implements ActionListener {
 
 	public AddEditEpisodeView(TVSeries seriesToUpdate, Episode episodeToEdit){
 		
 		boolean newSeriesFlag = false;
-
-		
-		// Create New JFrame
-		JFrame frame = new JFrame();
-
-		// Set the size of the frame.
-		frame.setSize(400, 300);
-
 		// Set the title of the frame based on if sent a non null mediaMaker.
 		if(episodeToEdit.getTitle() == null){
 			if(seriesToUpdate.getTitle() == null){
-				frame.setTitle("Add New Series and New Episode");
 				newSeriesFlag = true;
 			}
 			else {
-				frame.setTitle("Add New Episode to " + seriesToUpdate.getTitle() + " series");
 				newSeriesFlag = false;
 			}
 		}
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		//Create the text fields for series info (populate if an edit
 	
+		//Create the text fields for series info (populate if an edit
 		JTextField seriesTitleField = new JTextField(seriesToUpdate.getTitle(),20);
 		seriesTitleField.setHorizontalAlignment(JTextField.CENTER);
 		JLabel seriesTitleLabel = new JLabel("TV Series Title: ");
@@ -79,8 +66,7 @@ public class AddEditEpisodeView extends JFrame implements ActionListener {
 			Integer value = Integer.parseInt(releaseYear.getValue().toString());
 			integerYearFormat.setMinimum(value);
 		}
-			
-		
+				
 		JFormattedTextField endingYear = new JFormattedTextField(integerYearFormat);
 		endingYear.setHorizontalAlignment(JTextField.CENTER);
 		JLabel endingYearLabel1 = new JLabel("Ending Year: ");
@@ -128,8 +114,7 @@ public class AddEditEpisodeView extends JFrame implements ActionListener {
 		c.gridx = 1;
 		c.gridy = 2;
 		seriesPanel.add(endingYear, c);
-		
-		
+				
 		c.fill = GridBagConstraints.FIRST_LINE_START;
 		c.gridx = 0;
 		c.gridy = 0;
@@ -178,9 +163,7 @@ public class AddEditEpisodeView extends JFrame implements ActionListener {
 		JFormattedTextField episodeNumber = new JFormattedTextField(integerSeriesYearFormat);
 		episodeNumber.setValue(episodeToEdit.getEpisodeNumber());
 		episodeNumber.setHorizontalAlignment(JTextField.CENTER);
-		
-		
-		
+				
 		//Episode Airing Date
 		SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
 		JFormattedTextField episodeDate = new JFormattedTextField(dateFormat);
@@ -200,13 +183,12 @@ public class AddEditEpisodeView extends JFrame implements ActionListener {
 			try {
 				episodeDate.setValue(new SimpleDateFormat("MM-dd-yyyy").parse(dateString));
 			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				episodeDate.setValue(null);
 			}
 		}
 		
 		String[] statusChoices = {"UNSPECIFIED", "SUSPENDED", "NO STATUS"};
-		JList statusJList = new JList(statusChoices);
+		JList<String> statusJList = new JList<String>(statusChoices);
 		JScrollPane statusPane = new JScrollPane(statusJList,ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		JLabel statusLabel = new JLabel("Special Status :");
 		statusJList.setPreferredSize(new Dimension(20,3));
@@ -311,14 +293,8 @@ public class AddEditEpisodeView extends JFrame implements ActionListener {
 		episodePanel.add(episodeSubPanel, BorderLayout.NORTH);
 		episodePanel.add(episodeInfoPanel, BorderLayout.CENTER);
 		episodePanel.add(episodeDetails, BorderLayout.SOUTH);
-		/* Integer seriesYear; // Integer representation of the 1 for Year (#1.08)
-		private String episodeDetails;
-		private Integer episodeNumber; //Integer representation of the 08 for Episode # (#1.08)
-		private Date episodeDate;//Object for date episode aired
-		*/
 		
 		// Add Cancel and Submit buttons to the 
-		
 		JButton cancel = new JButton("Cancel");
 		cancel.addActionListener(this);
 		cancel.setActionCommand("cancel");
@@ -345,22 +321,16 @@ public class AddEditEpisodeView extends JFrame implements ActionListener {
 		mainPanel1.add(buttonPanel,BorderLayout.SOUTH);
 		
 		mainPanel1.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
-		frame.add(mainPanel1);
-		frame.pack();
+		add(mainPanel1);
 	}
-
-
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("submit")){
-			System.out.println("submit");
-			System.exit(0);
+			
 		}
 		else {
-			System.out.println("cancel");
-			System.exit(0);
+			
 		}
-				
 	}	
-
 }

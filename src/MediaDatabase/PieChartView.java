@@ -21,7 +21,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class PieChartView implements Serializable, ActionListener{
+public class PieChartView extends JPanel implements Serializable{
 
 	/**
 	 * Generated Serialized UID.
@@ -50,8 +50,6 @@ public class PieChartView implements Serializable, ActionListener{
 			//System.out.println(sliceValues[arrayIndex]);
 			arrayIndex++;
 		}
-			
-	
 	}
 
 	// Frame work for the pie chart interface.
@@ -95,7 +93,7 @@ public class PieChartView implements Serializable, ActionListener{
 	
 		// Main panel.
 		JPanel panel = new JPanel();
-		panel.setLayout(new BorderLayout());// FlowLayout, Grid
+		panel.setLayout(new BorderLayout());
 	
 		// Panel 1 Pie Chart.
 		MediaMakerPie pie = new MediaMakerPie();
@@ -123,26 +121,20 @@ public class PieChartView implements Serializable, ActionListener{
 	
 		panel2.setSize(new Dimension(300, 300));
 	
-		frame.add(panel);
-		frame.setVisible(true);
-		frame.repaint();
-		Font titleFont = new Font("SansSerif", Font.BOLD, 30);
-		frame.setFont(titleFont);
-		frame.setTitle(title + "'s Categorized Media Credits");
-			frame.addWindowListener(new WindowAdapter() {
-				public void windowClosing(WindowEvent e) {
-					System.exit(0);
-				}
-			});
+		JPanel titlePanel = new JPanel(new BorderLayout());
+		JLabel titleLabel = new JLabel(title + "'s Categorized Media Credits");
+		Font titleFont = new Font("SansSerif", Font.BOLD, 20);
+		titleLabel.setFont(titleFont);
+		titlePanel.add(titleLabel, BorderLayout.CENTER);
+		panel.add(titlePanel, BorderLayout.NORTH);
+		add(panel);
 		}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void setData() {
 		// TODO Auto-generated method stub
 		
 	}
 }
-
 
 class Slice {
 	double value;

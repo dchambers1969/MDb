@@ -31,18 +31,10 @@ import javax.swing.border.EtchedBorder;
  * This class defines the Add Maker View. 
  */
 
-public class AddEditMakerView extends JFrame implements ActionListener{
+public class AddEditMakerView extends JPanel implements ActionListener{
 
 	public AddEditMakerView(MediaMaker mediaMaker, Actor actor, Director director, Producer producer){
-		// Create New JFrame
-		JFrame frame = new JFrame();
-
-		// Set the size of the frame.
-		frame.setSize(400, 300);
 		
-		// Make the frame visible to the user
-		frame.setVisible(true);
-	
 		JPanel mainRadio = new JPanel(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		JPanel subRadio = new JPanel();
@@ -73,6 +65,7 @@ public class AddEditMakerView extends JFrame implements ActionListener{
 			if(producer.getMakerFirstName()!=null)
 				producerButton.setSelected(true);
 		}
+		
 		c.anchor = GridBagConstraints.CENTER;
 		c.fill = GridBagConstraints.CENTER;
 		c.gridx = 0;
@@ -87,15 +80,13 @@ public class AddEditMakerView extends JFrame implements ActionListener{
 		mainRadio.add(subRadio,c);
 		
 		//Create the text fields for name (first and last name) Populate if Edit
-		
 		JTextField firstName = new JTextField(mediaMaker.getMakerFirstName(),15);
 		firstName.setHorizontalAlignment(JTextField.CENTER);
 		JLabel firstNameLabel = new JLabel("First Name: ");
 		JTextField lastName = new JTextField(mediaMaker.getMakerFamilyName(),15);
 		lastName.setHorizontalAlignment(JTextField.CENTER);
 		JLabel lastNameLabel = new JLabel("Last Name: ");
-		
-		
+				
 		//Create Scroll list for acceptable suffixes
 		JLabel suffixLabel = new JLabel("Suffix: ");
 		String [] suffixOptions = {"Jr", "I" , "II", "III", "IV", "V"};
@@ -118,8 +109,7 @@ public class AddEditMakerView extends JFrame implements ActionListener{
 		// This is the Input fields panel container.
 		JPanel namePanel = new JPanel(new GridBagLayout());
 		c = new GridBagConstraints();
-			
-		
+				
 		c.fill = GridBagConstraints.CENTER;
 		c.gridx = 0;
 		c.gridy = 0;
@@ -185,20 +175,16 @@ public class AddEditMakerView extends JFrame implements ActionListener{
 		mainPanel1.add(buttonPanel,BorderLayout.SOUTH);
 		
 		mainPanel1.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
-		frame.add(mainPanel1);
-		
+		add(mainPanel1);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("submit")){
-			System.out.println("submit");
-			System.exit(0);
+			
 		}
 		else {
-			System.out.println("cancel");
-			System.exit(0);
-		}
-				
+			
+		}	
 	}	
 }

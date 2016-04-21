@@ -22,13 +22,11 @@ public class MasterMediaListView extends JScrollPane implements ActionListener {
 		String [] titleArray = new String[titles.size()];
 		JList<String> titleJList = new JList<String>();
 
-
 		ArrayList<Episode> episodes;
 		if (!masterMediaList.isEmpty()) {
 			for(Media m: masterMediaList){
-				titles.add(m.getTitle());
 				if(m.getClass()==(new TVSeries().getClass())){
-					titles.set(titles.size()-1, titles.get(titles.size()-1) + "  <TV Series>");
+					titles.add(m.getTitle() + "  <TV Series>");
 					episodes = ((TVSeries)m).getEpisodes();
 					if(((TVSeries) m).getEpisodes()!=null){
 						for(Episode e: episodes){
@@ -37,12 +35,9 @@ public class MasterMediaListView extends JScrollPane implements ActionListener {
 					}
 				}
 				else if (m.getClass()==(new Movie().getClass())){
-					titles.set(titles.size()-1,titles.get(titles.size()-1) + "  <Movie>");
+					titles.add(m.getTitle() + "  <Movie>");
 				}
-
-
 			}
-
 
 			titles.toArray(titleArray);
 			titleJList = new JList<String>(titleArray);
@@ -61,9 +56,14 @@ public class MasterMediaListView extends JScrollPane implements ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
+	public void actionPerformed(ActionEvent e) {
+		if(e.getActionCommand().equals("submit")){
+			
+		}
+		else {
+			
+		}
+				
+	}	
 
 }

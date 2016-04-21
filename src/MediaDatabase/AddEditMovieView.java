@@ -23,28 +23,10 @@ import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 import javax.swing.text.NumberFormatter;
 
-public class AddEditMovieView extends JFrame implements ActionListener {
+public class AddEditMovieView extends JPanel implements ActionListener {
 
 	public AddEditMovieView(Movie movieToEdit){
-		
-		// Create New JFrame
-		JFrame frame = new JFrame();
-
-		// Set the size of the frame.
-		frame.setSize(400, 300);
-
-		// Set the title of the frame based on if sent a non null mediaMaker.
-		if(movieToEdit == null)
-			frame.setTitle("Add Movie");
-		else
-			frame.setTitle("Edit " + movieToEdit.getTitle());
-		
-		// Make the frame visible to the user
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-			
-		
+	
 		// Create the text fields for series info (populate if an edit).
 		JTextField movieTitleField = new JTextField(movieToEdit.getTitle(),20);
 		movieTitleField.setHorizontalAlignment(JTextField.CENTER);
@@ -103,7 +85,6 @@ public class AddEditMovieView extends JFrame implements ActionListener {
 				movieFormatGroup.setSelected(video.getModel(), true);
 			else
 				movieFormatGroup.setSelected(television.getModel(), true);
-		
 		}
 		// Add the radio buttons to the panel
 		c.fill = GridBagConstraints.LINE_START;
@@ -145,8 +126,6 @@ public class AddEditMovieView extends JFrame implements ActionListener {
 		c.gridy = 0;
 		mainPanel2.add(movieTitleField, c);
 		
-		
-		// Set the grid bag main panel 2 parameters.
 		c.fill = GridBagConstraints.FIRST_LINE_START;
 		c.gridx = 0;
 		c.gridy = 1;
@@ -154,21 +133,17 @@ public class AddEditMovieView extends JFrame implements ActionListener {
 		c.insets = new Insets(5,5,5,5);
 		mainPanel2.add(releaseYearLabel1,c);
 		
-		// Set the grid bag main panel parameters.
 		c.fill = GridBagConstraints.RELATIVE;
 		c.gridx = 1;
 		c.gridy = 1;
 		mainPanel2.add(releaseYear, c);
 		
-		// Set the grid bag warning panel parameters.
 		c.fill = GridBagConstraints.FIRST_LINE_START;
 		c.gridx = 0;
 		c.gridy = 0;
 		c.ipadx = 0;
 		c.anchor = GridBagConstraints.WEST;
 		warningPanel.add(releaseYearLabel2,c);
-		
-		 // Set the grid bag warning panel parameters.
 		
 		c.fill = GridBagConstraints.FIRST_LINE_START;
 		c.gridx = 0;
@@ -221,20 +196,16 @@ public class AddEditMovieView extends JFrame implements ActionListener {
 		// Surround the MainPanle2 with a raised etched border.
 		mainPanel1.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
 		// Add the main panel to the frame.
-		frame.add(mainPanel1);
-		// Useless pack statement.
-		frame.pack();
+		add(mainPanel1);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("submit")){
-			System.out.println("submit");
-			System.exit(0);
+			
 		}
 		else {
-			System.out.println("cancel");
-			System.exit(0);
-		}
+			
+		}		
 	}	
 }

@@ -16,24 +16,14 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.border.EtchedBorder;
 
-public class MakerTypeView extends JFrame implements ActionListener {
+public class MakerTypeView extends JPanel implements ActionListener {
 
-	public MakerTypeView() {
-		// Create New JFrame
-		JFrame frame = new JFrame();
-
-		// Set the size of the frame.
-		frame.setSize(400, 300);
-
-		// Set the title of the frame based on if sent a non null mediaMaker.
+	public MakerTypeView(String makerName) {
 		
-		// Make the frame visible to the user
-		frame.setVisible(true);
-	
 		JPanel mainRadio = new JPanel(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		JPanel subRadio = new JPanel();
-		JLabel radioLabel = new JLabel("Select for which type of Media Maker you want to add credits.");
+		JLabel radioLabel = new JLabel("Select for which role you want to add credits for " + makerName);
 		// Set border layout of mainRadio.
 		//mainRadio.setLayout(new BorderLayout());
 		// Create radio button panel.
@@ -102,22 +92,17 @@ public class MakerTypeView extends JFrame implements ActionListener {
 		
 		mainPanel1.add(mainRadio,BorderLayout.NORTH);
 		mainPanel1.add(buttonPanel,BorderLayout.SOUTH);
-		
-		mainPanel1.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
-		frame.add(mainPanel1);
-		
-		frame.pack();
+
+		add(mainPanel1);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("submit")){
-			System.out.println("submit");
-			System.exit(0);
+			
 		}
 		else {
-			System.out.println("cancel");
-			System.exit(0);
+			
 		}
 				
 	}	

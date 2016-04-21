@@ -12,17 +12,10 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.border.EtchedBorder;
 
-public class NewOrExistingSeriesView extends JFrame implements ActionListener{
+public class NewOrExistingSeriesView extends JPanel implements ActionListener{
 
 	public NewOrExistingSeriesView() {
-		// Create the radio buttons
 		
-		JFrame frame = new JFrame();
-
-		// Set the size of the frame.
-		frame.setSize(400, 300);
-		frame.setTitle("Select New or Existing Series.");
-		frame.setVisible(true);
 		JLabel pickSeriesSelection = new JLabel("  Select where you want the new Episode:      ");
 		JRadioButton existingSeries = new JRadioButton("Choose Existing Series");
 		JRadioButton newSeries = new JRadioButton("Create New Series");
@@ -53,25 +46,19 @@ public class NewOrExistingSeriesView extends JFrame implements ActionListener{
 		
 		submit.addActionListener(this);
 		submit.setActionCommand("submit");
-		// This is the backup panel that contains all other elements of this
-		// graphical user interface.
-		JPanel mainPanel1 = new JPanel(new BorderLayout());
-		// Surround the MainPanle2 with a raised etched border.
 		
 		mainPanel.add(buttonPanel,BorderLayout.SOUTH);
-		frame.add(mainPanel);
-		
-		frame.pack();
-
-		
-		
-		
+		add(mainPanel);
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	public void actionPerformed(ActionEvent e) {
+		if(e.getActionCommand().equals("submit")){
+			
+		}
+		else {
+			
+		}
+				
+	}	
 }
