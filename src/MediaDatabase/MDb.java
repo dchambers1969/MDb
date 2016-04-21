@@ -2,6 +2,7 @@ package MediaDatabase;
 
 import java.io.FileReader; //import to read in file
 import java.io.BufferedReader; //import Buffered Reader to read in file
+import java.io.File;
 import java.io.FileOutputStream; //import to write out search results
 import java.io.ObjectOutputStream; //import to write out objects from search results
 import java.io.Serializable; //import to be able to serialize objects to write
@@ -130,14 +131,16 @@ public class MDb implements Serializable{
 	 * @param fileName  String for file name of movie file
 	 * @throws IOException 
 	 */
-	public void readMovieFileIn(String fileName) throws IOException{
+	public void readMovieFileIn(String file) throws IOException{
+		
+		File fileName = new File(file);
 		
 		boolean fileNotFound = true;
 		InputStreamReader scanIn = new InputStreamReader(System.in);
 		BufferedReader input = new BufferedReader(scanIn);
 		int enterTwice = 0;
-		if (fileName.isEmpty())
-			++enterTwice;
+		//if (fileName.isEmpty())
+		//	++enterTwice;
 
 		while(fileNotFound){
 			try{
@@ -163,11 +166,12 @@ public class MDb implements Serializable{
 				System.out.println("Failed to read file.");
 				fileNotFound = true;
 				System.out.println("Please enter valid Movie file name:");
-				fileName = input.readLine();
-				if (fileName.isEmpty())
-					++enterTwice;
-				else
-					enterTwice = 0;
+				//fileName = input.readLine();
+				// TODO add JFileChooser for catch
+				//if (fileName.isEmpty())
+				//	++enterTwice;
+				//else
+				//	enterTwice = 0;
 				if (enterTwice == 2)
 					System.exit(0);
 			}

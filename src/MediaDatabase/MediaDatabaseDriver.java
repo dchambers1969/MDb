@@ -6,11 +6,11 @@ public class MediaDatabaseDriver {
 	static MediaDatabaseController mediaDatabaseController;
 		
 	// Models
-	static MDbModel movie;
-	static MDbModel series;
-	static MakerCreditsModel actors;
-	static MakerCreditsModel directors;
-	static MakerCreditsModel producers;
+	static MDbModel movie = new MDbModel();
+	static MDbModel series = new MDbModel();
+	static MakerCreditsModel actors = new MakerCreditsModel();
+	static MakerCreditsModel directors = new MakerCreditsModel();
+	static MakerCreditsModel producers = new MakerCreditsModel();
 
 	// Views
 	static SelectionView selectionView = new SelectionView();
