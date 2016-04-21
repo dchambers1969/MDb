@@ -1,10 +1,10 @@
 package MediaDatabase;
 
 public class MediaDatabaseDriver {
-	
+
 	// Controller
 	static MediaDatabaseController mediaDatabaseController;
-		
+
 	// Models
 	static MDbModel movie = new MDbModel();
 	static MDbModel series = new MDbModel();
@@ -17,7 +17,7 @@ public class MediaDatabaseDriver {
 	static MenuView menuView = new MenuView();
 	static MasterMakerListView makerList = new MasterMakerListView();
 	static MasterMediaListView mediaList = new MasterMediaListView();
-		
+
 	public MediaDatabaseDriver() {
 		// Purposefully left empty
 		// Possibly not needed
@@ -28,7 +28,7 @@ public class MediaDatabaseDriver {
 		// TODO Check for accuracy/functionality
 
 		new MediaDatabaseDriver();
-		
+
 		// Linking models to controller
 		mediaDatabaseController.setMediaModel(movie, series);
 		mediaDatabaseController.setMakerCreditsModel(actors, directors, producers);

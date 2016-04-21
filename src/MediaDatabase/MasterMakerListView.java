@@ -35,7 +35,8 @@ public class MasterMakerListView extends JScrollPane implements ActionListener {
 		JScrollPane seriesSelectPane = new JScrollPane(uniqueMakers,ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		seriesSelectPane.setSize(Toolkit.getDefaultToolkit().getScreenSize().width/6, Toolkit.getDefaultToolkit().getScreenSize().height/2);
 		seriesSelectPane.setVisible(true);
-		add(seriesSelectPane);
+		this.add(seriesSelectPane);
+		this.setVisible(true);
 	}
 
 	@Override
@@ -49,6 +50,24 @@ public class MasterMakerListView extends JScrollPane implements ActionListener {
 	}
 
 	public void setMakersList(ArrayList<MediaMaker> makersList) {
-		this.makersList = makersList;
+		this.makersList = makersList;		
+		
+		HashSet<String> makerSet = new HashSet<String>();
+		for(MediaMaker m: makersList){
+			makerSet.add(m.getMakerName());
+		}
+
+		String[] makers = new String[makerSet.size()];
+		makerSet.toArray(makers);
+		JList<String> uniqueMakers = new JList<String>(makers);
+
+
+		// This panel is a container for the two scroll panes necessary to show
+		// the selection return data.
+		JScrollPane seriesSelectPane = new JScrollPane(uniqueMakers,ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		seriesSelectPane.setSize(Toolkit.getDefaultToolkit().getScreenSize().width/6, Toolkit.getDefaultToolkit().getScreenSize().height/2);
+		seriesSelectPane.setVisible(true);
+		this.add(seriesSelectPane);
+		this.setVisible(true);
 	}	
 }

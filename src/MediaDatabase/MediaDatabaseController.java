@@ -42,6 +42,7 @@ import java.util.Set;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 
 /**
@@ -74,22 +75,17 @@ public class MediaDatabaseController extends JFrame implements Serializable {
 
 	// References to various views
 	private SelectionView selectionView;
-	private MenuView menuView = new MenuView();
-	private MasterMakerListView makerList = new MasterMakerListView();
-	private MasterMediaListView mediaList = new MasterMediaListView();
+	private MenuView menuView;
+	//private JSplitPane splitMediaPane;
+	private MasterMakerListView makerList;
+	private MasterMediaListView mediaList;
 
 
 	// Main frame and panel to aggregate various components
 	private static JFrame mainFrame = new JFrame();
 	private static JPanel mainPanel = new JPanel(new BorderLayout());
 
-
-
-
-
 	public MediaDatabaseController(){
-		// Purposefully left empty
-		// Not needed, using setters insteadmainFrame.add(mainPanel);
 		mainFrame.setTitle("MDb");
 		mainFrame.pack();
 		mainFrame.setVisible(true);
@@ -112,13 +108,6 @@ public class MediaDatabaseController extends JFrame implements Serializable {
 		this.actors = actors;
 		this.directors = directors;
 		this.producers = producers;
-	}
-
-	/**
-	 * @return the selectView
-	 */
-	public SelectionView getSelectionView() {
-		return selectionView;
 	}
 
 	/**
@@ -179,6 +168,7 @@ public class MediaDatabaseController extends JFrame implements Serializable {
 		this.menuView.setDisplayClear(false);
 		this.menuView.setDisplay(false);
 
+		this.setMasterListViews(makerList, mediaList);
 		mainPanel.add(this.menuView,BorderLayout.NORTH);
 		mainFrame.add(mainPanel);
 		mainFrame.pack();
@@ -218,7 +208,12 @@ public class MediaDatabaseController extends JFrame implements Serializable {
 			producers = (MakerCreditsModel) databasesTemp.get(4);
 
 			// TODO Change view 
-
+			menuView.setSaveToFavorites(false);
+			menuView.setExport(true);
+			menuView.setSelectionEdits(false);
+			menuView.setDatabaseEdits(true);
+			menuView.setDisplayClear(false);
+			menuView.setDisplay(false);
 		}
 	}
 	class ImportTextAllListener implements ActionListener {
@@ -293,6 +288,12 @@ public class MediaDatabaseController extends JFrame implements Serializable {
 			//TODO
 			//TODO
 			//TODO
+			menuView.setSaveToFavorites(false);
+			menuView.setExport(true);
+			menuView.setSelectionEdits(false);
+			menuView.setDatabaseEdits(true);
+			menuView.setDisplayClear(false);
+			menuView.setDisplay(false);
 		}
 	}
 	class ImportTextMoviesListener implements ActionListener {
@@ -313,7 +314,16 @@ public class MediaDatabaseController extends JFrame implements Serializable {
 				}
 			}
 
-			mediaList.setMasterMediaList(movies.getAllMedia(null, movies, series));
+
+			menuView.setSaveToFavorites(false);
+			menuView.setExport(true);
+			menuView.setSelectionEdits(false);
+			menuView.setDatabaseEdits(true);
+			menuView.setDisplayClear(false);
+			menuView.setDisplay(false);
+			
+			mediaList.setMasterMediaList(movies.getAllMedia(new Media(), movies, series));
+			
 		}
 	}
 	class ImportTextSeriesListener implements ActionListener {
@@ -331,6 +341,12 @@ public class MediaDatabaseController extends JFrame implements Serializable {
 					e1.printStackTrace();
 				}
 			}
+			menuView.setSaveToFavorites(false);
+			menuView.setExport(true);
+			menuView.setSelectionEdits(false);
+			menuView.setDatabaseEdits(true);
+			menuView.setDisplayClear(false);
+			menuView.setDisplay(false);
 		}
 	}
 	class ImportTextActorsListener implements ActionListener {
@@ -346,6 +362,12 @@ public class MediaDatabaseController extends JFrame implements Serializable {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			menuView.setSaveToFavorites(false);
+			menuView.setExport(true);
+			menuView.setSelectionEdits(false);
+			menuView.setDatabaseEdits(true);
+			menuView.setDisplayClear(false);
+			menuView.setDisplay(false);
 		}
 	}
 	class ImportTextDirectorsListener implements ActionListener {
@@ -361,6 +383,12 @@ public class MediaDatabaseController extends JFrame implements Serializable {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			menuView.setSaveToFavorites(false);
+			menuView.setExport(true);
+			menuView.setSelectionEdits(false);
+			menuView.setDatabaseEdits(true);
+			menuView.setDisplayClear(false);
+			menuView.setDisplay(false);
 		}
 	}
 	class ImportTextProducersListener implements ActionListener {
@@ -376,6 +404,12 @@ public class MediaDatabaseController extends JFrame implements Serializable {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			menuView.setSaveToFavorites(false);
+			menuView.setExport(true);
+			menuView.setSelectionEdits(false);
+			menuView.setDatabaseEdits(true);
+			menuView.setDisplayClear(false);
+			menuView.setDisplay(false);
 		}
 	}
 	class ExportBinaryListener implements ActionListener {
@@ -424,6 +458,12 @@ public class MediaDatabaseController extends JFrame implements Serializable {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
+		menuView.setSaveToFavorites(false);
+		menuView.setExport(false);
+		menuView.setSelectionEdits(false);
+		menuView.setDatabaseEdits(false);
+		menuView.setDisplayClear(false);
+		menuView.setDisplay(false);
 		}
 	}
 	class SaveFavListener implements ActionListener {
@@ -504,7 +544,9 @@ public class MediaDatabaseController extends JFrame implements Serializable {
 		this.makerList = makerList;
 		this.mediaList = mediaList;
 
-		JSplitPane splitMediaPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+		JSplitPane splitMediaPane = new JSplitPane();
+		splitMediaPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+		splitMediaPane.setResizeWeight(0.5d);
 		splitMediaPane.setRightComponent(this.makerList);
 		splitMediaPane.setLeftComponent(this.mediaList);
 		splitMediaPane.setSize(Toolkit.getDefaultToolkit().getScreenSize().width/3, Toolkit.getDefaultToolkit().getScreenSize().height/2);
