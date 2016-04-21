@@ -64,7 +64,7 @@ import javax.swing.JSplitPane;
 public class MediaDatabaseController extends JFrame implements Serializable {
 
 	private static final long serialVersionUID = 4254743509402377695L;
-	
+
 	// References to models	
 	private MDbModel movies;
 	private MDbModel series;
@@ -288,7 +288,7 @@ public class MediaDatabaseController extends JFrame implements Serializable {
 					e1.printStackTrace();
 				}
 			}
-			
+
 			//TODO
 			//TODO
 			//TODO
@@ -312,6 +312,8 @@ public class MediaDatabaseController extends JFrame implements Serializable {
 					e1.printStackTrace();
 				}
 			}
+
+			mediaList.setMasterMediaList(movies.getAllMedia(null, movies, series));
 		}
 	}
 	class ImportTextSeriesListener implements ActionListener {

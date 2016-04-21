@@ -46,5 +46,9 @@ public class MasterMakerListView extends JScrollPane implements ActionListener {
 		else {
 			
 		}	
+	}
+
+	public void setMakersList(ArrayList<MediaMaker> makersList) {
+		this.makersList = makersList;
 	}	
 }
