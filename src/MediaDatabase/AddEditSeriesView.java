@@ -16,7 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 import javax.swing.text.NumberFormatter;
 
-public class AddEditSeriesView extends JFrame implements ActionListener {
+public class AddEditSeriesView extends JPanel implements ActionListener {
 
 	/**
 	 * 
@@ -24,27 +24,8 @@ public class AddEditSeriesView extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 
 	public AddEditSeriesView(TVSeries seriesToEdit){
-				
-		// Create New JFrame
-		JFrame frame = new JFrame();
-
-		// Set the size of the frame.
-		frame.setSize(400, 300);
-
-		// Set the title of the frame based on if sent a non null mediaMaker.
-		if(seriesToEdit == null)
-			frame.setTitle("Add Series");
-		else
-			frame.setTitle("Edit " + seriesToEdit.getTitle());
-		
-		// Make the frame visible to the user
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-			
 		
 		//Create the text fields for series info (populate if an edit
-	
 		JTextField seriesTitleField = new JTextField(seriesToEdit.getTitle(),20);
 		seriesTitleField.setHorizontalAlignment(JTextField.CENTER);
 		JLabel seriesTitleLabel = new JLabel("TV Series Title: ");
@@ -69,8 +50,7 @@ public class AddEditSeriesView extends JFrame implements ActionListener {
 			Integer value = Integer.parseInt(releaseYear.getValue().toString());
 			integerYearFormat.setMinimum(value);
 		}
-			
-		
+				
 		JFormattedTextField endingYear = new JFormattedTextField(integerYearFormat);
 		endingYear.setHorizontalAlignment(JTextField.CENTER);
 		JLabel endingYearLabel1 = new JLabel("Ending Year: ");
@@ -78,8 +58,7 @@ public class AddEditSeriesView extends JFrame implements ActionListener {
 		System.out.println(seriesToEdit.getEndingYear());
 		endingYear.setSize(10,10);
 		JLabel endingYearLabel2 = new JLabel("Valid entries for ending year > release or blank.");
-		
-		
+				
 		JPanel mainPanel2 = new JPanel(new GridBagLayout());
 		JPanel warningPanel = new JPanel(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
@@ -113,8 +92,7 @@ public class AddEditSeriesView extends JFrame implements ActionListener {
 		c.gridx = 1;
 		c.gridy = 2;
 		mainPanel2.add(endingYear, c);
-		
-		
+				
 		c.fill = GridBagConstraints.FIRST_LINE_START;
 		c.gridx = 0;
 		c.gridy = 0;
@@ -125,10 +103,8 @@ public class AddEditSeriesView extends JFrame implements ActionListener {
 		c.gridx = 0;
 		c.gridy = 1;
 		warningPanel.add(endingYearLabel2,c);
-		
-		
+				
 		// Add Cancel and Submit buttons to the 
-		
 		JButton cancel = new JButton("Cancel");
 		cancel.addActionListener(this);
 		cancel.setActionCommand("cancel");
@@ -152,22 +128,16 @@ public class AddEditSeriesView extends JFrame implements ActionListener {
 		mainPanel1.add(warningPanel,BorderLayout.CENTER);
 		mainPanel1.add(buttonPanel,BorderLayout.SOUTH);
 		
-		mainPanel1.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
-		frame.add(mainPanel1);
-		frame.pack();
+		add(mainPanel1);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("submit")){
-			System.out.println("submit");
-			System.exit(0);
+			
 		}
 		else {
-			System.out.println("cancel");
-			System.exit(0);
-		}
-				
+			
+		}		
 	}	
-
 }

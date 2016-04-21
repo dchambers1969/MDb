@@ -25,7 +25,7 @@ import javax.swing.JPanel;
  *
  * @version 1.0
  */
-class HistogramView extends JPanel implements ActionListener {
+class HistogramView extends JPanel {
 
 	/**
 	 * Generated Long Serial Version UID
@@ -233,9 +233,7 @@ class HistogramView extends JPanel implements ActionListener {
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		frame.setLocation(dim.width / 2 - frame.getSize().width / 2, dim.height / 2 - frame.getSize().height / 2);
 		// Create new Panel.
-		JPanel mainPanel = new JPanel();
-		// Set Border Layout for Main Panel.
-		mainPanel.setLayout(new BorderLayout());
+		JPanel mainPanel = new JPanel(new BorderLayout());
 		// Panel 1, Histogram panel.
 		JPanel panel1 = new JPanel(new BorderLayout());
 		Histogram histogram;
@@ -263,30 +261,7 @@ class HistogramView extends JPanel implements ActionListener {
 
 		JPanel panel3 = new JPanel();
 		mainPanel.add(panel3, BorderLayout.WEST);
-
-		// Add the panel to the frame.
-		frame.add(mainPanel);
-		// Add Panel1 to the main panel.
-		mainPanel.add(panel1);
-		// Add a window listener.
-		frame.addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-				System.exit(0);
-			}
-		});
-
-		// Make the Frame Visible
-		frame.setVisible(true);
-		// Repaint the frame.
-		frame.repaint();
-		// Set the title of the frame.
-		frame.setTitle("Histogram");
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
+		add(mainPanel);
 	}
 }
 
@@ -302,7 +277,6 @@ class Histogram extends JPanel {
 	private Integer maxValue;
 	private ArrayList<Integer> yearArray;
 	private boolean useChartRanges;
-
 
 	/**
 	 * Histogram constructor.
