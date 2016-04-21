@@ -1,5 +1,6 @@
 package MediaDatabase;
 
+import java.awt.event.ActionListener;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -26,6 +27,7 @@ public class MenuView extends JMenuBar {
 		// Set the selection edit as disabled.
 		bulkEdit.setEnabled(false);
 		JMenu display = new JMenu("Display");
+		display.setEnabled(false);
 		JMenu space1 = new JMenu("    "); // set selectable or visible to false
 		space1.setEnabled(false);
 		JMenu space2 = new JMenu("    ");
@@ -104,30 +106,171 @@ public class MenuView extends JMenuBar {
 		// Create the Display sub menu items
 		JMenuItem pie = new JMenuItem("Pie Chart");
 		JMenuItem chart = new JMenuItem("Histogram");
+		JMenuItem clearDisplay = new JMenuItem("Clear");
 
 		// Add to the Display submenu.
 		display.add(pie);
 		display.add(chart);
+		display.add(clearDisplay);
 
 		// Create the Edit sub menu items.
-		JMenuItem clearSelection = new JMenuItem("Clear Selection");
 		JMenuItem clearAll = new JMenuItem("Clear All");
 		JMenuItem delete = new JMenuItem("Delete");
-		JMenuItem add = new JMenuItem("Add");
 		JMenuItem editEntry = new JMenuItem("Edit");
 
 		// Add the Selection Edit sub menu items.
-		selectionEdit.add(clearSelection);
 		selectionEdit.add(clearAll);
 		selectionEdit.add(delete);
-		selectionEdit.add(add);
 		selectionEdit.add(editEntry);
 
+		// Create the Bulk Edit sub menu items.
+		JMenuItem addEditEpisode = new JMenuItem("Add/Edit Episode");
+		JMenuItem addEditSeries = new JMenuItem("Add/Edit Series");
+		JMenuItem addEditMovie = new JMenuItem("Add/Edit Movie");
+		JMenuItem addEditMaker = new JMenuItem("Add/Edit Maker");
+		JMenuItem addCredits = new JMenuItem("Add Credits to Maker");
+		
+		
 		// Add the Bulk Edit sub menu items.
-		selectionEdit.add(clearSelection);
-		selectionEdit.add(clearAll);
-		selectionEdit.add(delete);
-		selectionEdit.add(add);
-		selectionEdit.add(editEntry);
+		bulkEdit.add(addEditEpisode);
+		bulkEdit.add(addEditSeries);
+		bulkEdit.add(addEditMovie);
+		bulkEdit.add(addEditMaker);
+		bulkEdit.add(addCredits);
+	}
+
+	public void addFileImportBinaryActionListener(ActionListener importBinaryListener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addFileImportTextAllActionListener(ActionListener importTextAllListener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addFileImportTextMoviesActionListener(ActionListener importTextMoviesListener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addFileImportTextSeriesActionListener(ActionListener importTextSeriesListener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addFileImportTextActorsActionListener(ActionListener importTextActorsListener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addFileImportTextDirectorsActionListener(ActionListener importTextDirectorsListener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addFileImportTextProducersActionListener(ActionListener importTextProducersListener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addFileExportBinaryActionListener(ActionListener exportBinaryListener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addFileExportTextAllActionListener(ActionListener exportTextAllListener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addFileExportTextMoviesActionListener(ActionListener exportTextMoviesListener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addFileExportTextSeriesActionListener(ActionListener exportTextSeriesListener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addFileExportTextActorsActionListener(ActionListener exportTextActorsListener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addFileExportTextDirectorsActionListener(ActionListener exportTextDirectorsListener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addFileExportTextProducersActionListener(ActionListener exportTextProducersListener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addFileLoadFavoritesActionListener(ActionListener loadFavListener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addFileSaveToFavoritesActionListener(ActionListener saveFavListener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addSelectionEditsClearAllActionListener(ActionListener editsClearAllListener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addSelectionEditsDeleteActionListener(ActionListener editsDeleteListener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addSelectionEditsEditActionListener(ActionListener editsEditListener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addDatabaseEditsAddEditEpisodeActionListener(ActionListener addEditEpisodeListener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addDatabaseEditsAddEditSeriesActionListener(ActionListener addEditSeriesListener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addDatabaseEditsAddEditMakerActionListener(ActionListener addEditMakerListener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addDatabaseEditsAddEditMovieActionListener(ActionListener addEditMovieListener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addDatabaseEditsAddCreditsToMakerActionListener(ActionListener addCreditsListener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addDisplayPieChartActionListener(ActionListener displayPieChartListener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addDisplayHistogramActionListener(ActionListener displayHistogramListener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addDisplayClearDisplayActionListener(ActionListener displayClearListener) {
+		// TODO Auto-generated method stub
+		
 	}
 }

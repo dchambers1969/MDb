@@ -6,9 +6,12 @@ public class MediaDatabaseDriver {
 	static MediaDatabaseController mediaDatabaseController;
 		
 	// Models
-	static MDbModel media;
-	static MakerCreditsModel makers;
-	
+	static MDbModel movie;
+	static MDbModel series;
+	static MakerCreditsModel actors;
+	static MakerCreditsModel directors;
+	static MakerCreditsModel producers;
+
 	// Views
 	static SelectionView selectionView = new SelectionView();
 	static MenuView menuView = new MenuView();
@@ -27,8 +30,8 @@ public class MediaDatabaseDriver {
 		new MediaDatabaseDriver();
 		
 		// Linking models to controller
-		mediaDatabaseController.setMediaModel(media);
-		mediaDatabaseController.setMakerCreditsModel(makers);
+		mediaDatabaseController.setMediaModel(movie, series);
+		mediaDatabaseController.setMakerCreditsModel(actors, directors, producers);
 
 		// Linking views to controller		
 		mediaDatabaseController.setMenuView(menuView);
