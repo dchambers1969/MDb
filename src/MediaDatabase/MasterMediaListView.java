@@ -64,6 +64,10 @@ public class MasterMediaListView extends JScrollPane implements ActionListener {
 			
 		}
 				
+	}
+
+	public void setMasterMediaList(ArrayList<Media> masterMediaList) {
+		this.masterMediaList = masterMediaList;
 	}	
 
 }
