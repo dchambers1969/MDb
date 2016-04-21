@@ -1,15 +1,18 @@
-// Selection and other views need addListener methods
+	/**
+	Modal/temp views to be called in methods
+	
+	static EditMediaView editMediaView;
+	static AddEditMakerView addMakerView;
+	static AddMediaView addMediaView;
+	static AddCastToMediaView addCastToMediaView;
+	static AddEditEpisodeView;
+	static AddEditSeriesView;
+	static MakerTypeView;
+	static NewOrExistingSeriesView;
+	static SelectSeriesView;
+	static SelectMakerView;// Selection and other views need addListener methods
 
-
-
-
-
-
-
-
-
-
-
+	*/
 
 
 package MediaDatabase;
@@ -34,6 +37,7 @@ import java.util.Set;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 
 /**
  * Project #4
@@ -54,36 +58,32 @@ import javax.swing.JPanel;
 
 public class MediaDatabaseController extends JFrame {
 
-	// TODO Maybe other five models instead of the current two?
-	// TODO Will need new setters
-	// private static MDbModel movies;
-	// private static MDbModel series;
-	// private static MakerCreditsModel actors;
-	// private static MakerCreditsModel directors;
-	// private static MakerCreditsModel producers;
-
-	// References to Media and Maker models
-	private MDbModel mediaModel;
-	private MakerCreditsModel makerModel;
+	// References to models	
+	private MDbModel media;
+	private MakerCreditsModel makers;
 
 	// References to various views
 	private SelectionView selectionView;
-
-	private EditMediaView editMediaView;
-	private AddEditMakerView addMakerView;
-	private AddMediaView addMediaView;
-	private AddCastToMediaView addCastToMediaView;
-
-	private MakerActionListView makerActionListView;
-	private MediaActionListView mediaActionListView;
+	private MenuView menuView = new MenuView();
+	private MasterMakerListView makerList = new MasterMakerListView();
+	private MasterMediaListView mediaList = new MasterMediaListView();
+	
 	
 	// Main frame and panel to aggregate various components
 	private static JFrame mainFrame = new JFrame();
 	private static JPanel mainPanel = new JPanel();
 
+	
+	
+	
+	
 	public MediaDatabaseController(){
 		// Purposefully left empty
-		// Not needed, using setters instead
+		// Not needed, using setters insteadmainFrame.add(mainPanel);
+		mainFrame.pack();
+		mainFrame.setVisible(true);
+		//mainFrame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
+		mainFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 
 
@@ -91,28 +91,28 @@ public class MediaDatabaseController extends JFrame {
 	 * @return the mdbModel
 	 */
 	public MDbModel getMediaModel() {
-		return mediaModel;
+		return media;
 	}
 
 	/**
 	 * @param mdbModel the mdbModel to set
 	 */
 	public void setMediaModel(MDbModel mediaModel) {
-		this.mediaModel = mediaModel;
+		this.media = mediaModel;
 	}
 
 	/**
 	 * @return the makerCreditsModel
 	 */
 	public MakerCreditsModel getMakerCreditsModel() {
-		return makerModel;
+		return makers;
 	}
 
 	/**
 	 * @param makerCreditsModel the makerCreditsModel to set
 	 */
 	public void setMakerCreditsModel(MakerCreditsModel makerCreditsModel) {
-		this.makerModel = makerCreditsModel;
+		this.makers = makerCreditsModel;
 	}
 
 	/**
@@ -128,109 +128,36 @@ public class MediaDatabaseController extends JFrame {
 	public void setSelectionView(SelectionView selectionView) {
 		this.selectionView = selectionView;
 
-		mainPanel.add(this.selectionView, BorderLayout.WEST);
+		mainPanel.add(this.selectionView);
 		mainFrame.add(mainPanel);
 		mainFrame.pack();
 		mainFrame.setVisible(true);
-		//mainFrame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
 		mainFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		// TODO 
 		// add ActionListeners
 	}
 
-	/**
-	 * @return the makerActionListView
-	 */
-	public MakerActionListView getMakerActionListView() {
-		return makerActionListView;
+	public void setMenuView(MenuView menuView) {
+		// TODO Auto-generated method stub
+		this.menuView = menuView;
+		mainPanel.add(this.menuView);
+		mainFrame.add(mainPanel);
+		mainFrame.pack();
+		mainFrame.setVisible(true);
+		mainFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 
-	/**
-	 * @param makerActionListView the makerActionListView to set
-	 */
-	public void setMakerActionListView(MakerActionListView makerActionListView) {
-		this.makerActionListView = makerActionListView;
-		// TODO
-		// add ActionListeners
-	}
+	public void setMasterListViews(MasterMakerListView makerList, MasterMediaListView mediaList) {
+		// TODO Auto-generated method stub
+		this.makerList = makerList;
+		this.mediaList = mediaList;
+		
+		JSplitPane splitMediaPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, this.makerList, this.mediaList);
 
-	/**
-	 * @return the mediaActionListView
-	 */
-	public MediaActionListView getMediaActionListView() {
-		return mediaActionListView;
-	}
-
-	/**
-	 * @param mediaActionListView the mediaActionListView to set
-	 */
-	public void setMediaActionListView(MediaActionListView mediaActionListView) {
-		this.mediaActionListView = mediaActionListView;
-		// TODO
-		// add ActionListeners
-	}
-
-	/**
-	 * @return the editMediaView
-	 */
-	public EditMediaView getEditMediaView() {
-		return editMediaView;
-	}
-
-	/**
-	 * @param editMediaView the editMediaView to set
-	 */
-	public void setEditMediaView(EditMediaView editMediaView) {
-		this.editMediaView = editMediaView;
-		// TODO
-		// add ActionListeners
-	}
-
-	/**
-	 * @return the addMakerView
-	 */
-	public AddEditMakerView getAddMakerView() {
-		return addMakerView;
-	}
-
-	/**
-	 * @param addMakerView the addMakerView to set
-	 */
-	public void setAddMakerView(AddEditMakerView addMakerView) {
-		this.addMakerView = addMakerView;
-		// TODO
-		// add ActionListeners
-	}
-
-	/**
-	 * @return the addMediaView
-	 */
-	public AddMediaView getAddMediaView() {
-		return addMediaView;
-	}
-
-	/**
-	 * @param addMediaView the addMediaView to set
-	 */
-	public void setAddMediaView(AddMediaView addMediaView) {
-		this.addMediaView = addMediaView;
-		// TODO
-		// add ActionListeners
-	}
-
-	/**
-	 * @return the addCastToMediaView
-	 */
-	public AddCastToMediaView getAddCastToMediaView() {
-		return addCastToMediaView;
-	}
-
-	/**
-	 * @param addCastToMediaView the addCastToMediaView to set
-	 */
-	public void setAddCastToMediaView(AddCastToMediaView addCastToMediaView) {
-		this.addCastToMediaView = addCastToMediaView;
-		// TODO
-		// add ActionListeners
+		mainPanel.add(splitMediaPane);
+		mainFrame.add(mainPanel);
+		mainFrame.pack();
+		mainFrame.setVisible(true);
+		mainFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 }

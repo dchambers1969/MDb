@@ -6,26 +6,15 @@ public class MediaDatabaseDriver {
 	static MediaDatabaseController mediaDatabaseController;
 		
 	// Models
-	static MDbModel mdbModel = new MDbModel();
-	static MakerCreditsModel makerCreditsModel = new MakerCreditsModel();
-	// TODO Other possible models for 
-	// static MDbModel movies;
-	// static MDbModel series;
-	// static MakerCreditsModel actors;
-	// static MakerCreditsModel directors;
-	// static MakerCreditsModel producers;
+	static MDbModel media;
+	static MakerCreditsModel makers;
 	
 	// Views
 	static SelectionView selectionView = new SelectionView();
-	// static EditMediaView editMediaView;
-	// static AddEditMakerView addMakerView;
-	// static AddMediaView addMediaView;
-	// static AddCastToMediaView addCastToMediaView;
-	
-	// ??? Maybe
-	// static MakerActionListView makerActionListView;
-	// static MediaActionListView mediaActionListView;
-	
+	static MenuView menuView = new MenuView();
+	static MasterMakerListView makerList = new MasterMakerListView();
+	static MasterMediaListView mediaList = new MasterMediaListView();
+		
 	public MediaDatabaseDriver() {
 		// Purposefully left empty
 		// Possibly not needed
@@ -38,14 +27,12 @@ public class MediaDatabaseDriver {
 		new MediaDatabaseDriver();
 		
 		// Linking models to controller
-		mediaDatabaseController.setMediaModel(mdbModel);
-		mediaDatabaseController.setMakerCreditsModel(makerCreditsModel);
+		mediaDatabaseController.setMediaModel(media);
+		mediaDatabaseController.setMakerCreditsModel(makers);
 
-		// Linking views to controller
+		// Linking views to controller		
+		mediaDatabaseController.setMenuView(menuView);
 		mediaDatabaseController.setSelectionView(selectionView);
-		//mediaDatabaseController.setAddCastToMediaView(addCastToMediaView);
-		//mediaDatabaseController.setAddMakerView(addMakerView);
-		//mediaDatabaseController.setAddMediaView(addMediaView);
-		//mediaDatabaseController.setEditMediaView(editMediaView);
+		mediaDatabaseController.setMasterListViews(makerList, mediaList);
 	}
 }
