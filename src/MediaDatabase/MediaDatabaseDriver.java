@@ -36,6 +36,7 @@ public class MediaDatabaseDriver {
 		// Linking views to controller		
 		mediaDatabaseController.setMenuView(menuView);
 		mediaDatabaseController.setSelectionView(selectionView);
-		mediaDatabaseController.setMasterListViews(makerList, mediaList);
+		mediaDatabaseController.setMakerListView(makerList);
+		mediaDatabaseController.setMediaListView(mediaList);
 	}
 }

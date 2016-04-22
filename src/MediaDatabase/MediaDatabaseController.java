@@ -65,7 +65,7 @@ import javax.swing.JSplitPane;
 public class MediaDatabaseController extends JFrame implements Serializable {
 
 	private static final long serialVersionUID = 4254743509402377695L;
-
+	
 	// References to models	
 	private MDbModel movies;
 	private MDbModel series;
@@ -76,7 +76,6 @@ public class MediaDatabaseController extends JFrame implements Serializable {
 	// References to various views
 	private SelectionView selectionView;
 	private MenuView menuView;
-	//private JSplitPane splitMediaPane;
 	private MasterMakerListView makerList;
 	private MasterMediaListView mediaList;
 
@@ -86,11 +85,7 @@ public class MediaDatabaseController extends JFrame implements Serializable {
 	private static JPanel mainPanel = new JPanel(new BorderLayout());
 
 	public MediaDatabaseController(){
-		mainFrame.setTitle("MDb");
-		mainFrame.pack();
-		mainFrame.setVisible(true);
-		//mainFrame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
-		mainFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
 	}
 
 	/**
@@ -116,7 +111,9 @@ public class MediaDatabaseController extends JFrame implements Serializable {
 	public void setSelectionView(SelectionView selectionView) {
 		this.selectionView = selectionView;
 
-		mainPanel.add(this.selectionView,BorderLayout.WEST);
+		mainPanel.add(this.selectionView);//,BorderLayout.WEST);
+		mainFrame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
+		mainFrame.setTitle("MDb");
 		mainFrame.add(mainPanel);
 		mainFrame.pack();
 		mainFrame.setVisible(true);
@@ -170,10 +167,10 @@ public class MediaDatabaseController extends JFrame implements Serializable {
 
 		this.setMasterListViews(makerList, mediaList);
 		mainPanel.add(this.menuView,BorderLayout.NORTH);
-		mainFrame.add(mainPanel);
-		mainFrame.pack();
-		mainFrame.setVisible(true);
-		mainFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		//mainFrame.setTitle("MDb");
+		//mainFrame.add(mainPanel);
+		//mainFrame.pack();
+		//mainFrame.setVisible(true);
 	}
 
 	class ImportBinaryListener implements ActionListener {
@@ -323,7 +320,6 @@ public class MediaDatabaseController extends JFrame implements Serializable {
 			menuView.setDisplay(false);
 			
 			mediaList.setMasterMediaList(movies.getAllMedia(new Media(), movies, series));
-			
 		}
 	}
 	class ImportTextSeriesListener implements ActionListener {
@@ -539,23 +535,48 @@ public class MediaDatabaseController extends JFrame implements Serializable {
 		}
 	}
 
+	public void setMakerListView(MasterMakerListView makerList) {
+		this.makerList = makerList;
+		JFrame frame1 = new JFrame();
+		frame1.setSize(Toolkit.getDefaultToolkit().getScreenSize());
+		frame1.add(this.makerList);
+		frame1.pack();
+		frame1.setVisible(true);
+		//mainFrame.add(mainPanel);
+		//mainFrame.pack();
+	}
+	
+	public void setMediaListView(MasterMediaListView mediaList) {
+		this.mediaList = mediaList;
+		JFrame frame2 = new JFrame();
+		frame2.add(this.mediaList);
+		frame2.pack();
+		frame2.setVisible(true);
+		//mainFrame.pack();
+		//mainFrame.setVisible(true);
+		//mainFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+	}
+	
+	
+	
+	
 	public void setMasterListViews(MasterMakerListView makerList, MasterMediaListView mediaList) {
-		// TODO Auto-generated method stub
 		this.makerList = makerList;
 		this.mediaList = mediaList;
 
+		//this.makerList.addActionListener(new ChangeListener);
+		//this.mediaList.addActionListener(new ChangeListener);
+		
 		JSplitPane splitMediaPane = new JSplitPane();
 		splitMediaPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		splitMediaPane.setResizeWeight(0.5d);
-		splitMediaPane.setRightComponent(this.makerList);
-		splitMediaPane.setLeftComponent(this.mediaList);
-		splitMediaPane.setSize(Toolkit.getDefaultToolkit().getScreenSize().width/3, Toolkit.getDefaultToolkit().getScreenSize().height/2);
-		splitMediaPane.setVisible(true);
+		splitMediaPane.setRightComponent(this.mediaList);
+		splitMediaPane.setLeftComponent(this.makerList);
 
-		mainPanel.add(splitMediaPane,BorderLayout.CENTER);
-		mainFrame.add(mainPanel);
-		mainFrame.pack();
-		mainFrame.setVisible(true);
-		mainFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		//mainPanel.add(splitMediaPane,BorderLayout.CENTER);
+		//mainFrame.add(mainPanel);
+		//mainFrame.pack();
+		//mainFrame.setVisible(true);
+		//mainFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 }

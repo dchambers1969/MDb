@@ -35,8 +35,8 @@ public class MasterMakerListView extends JScrollPane implements ActionListener {
 		JScrollPane seriesSelectPane = new JScrollPane(uniqueMakers,ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		seriesSelectPane.setSize(Toolkit.getDefaultToolkit().getScreenSize().width/6, Toolkit.getDefaultToolkit().getScreenSize().height/2);
 		seriesSelectPane.setVisible(true);
-		this.add(seriesSelectPane);
-		this.setVisible(true);
+		add(seriesSelectPane);
+		setVisible(true);
 	}
 
 	@Override
@@ -67,7 +67,7 @@ public class MasterMakerListView extends JScrollPane implements ActionListener {
 		JScrollPane seriesSelectPane = new JScrollPane(uniqueMakers,ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		seriesSelectPane.setSize(Toolkit.getDefaultToolkit().getScreenSize().width/6, Toolkit.getDefaultToolkit().getScreenSize().height/2);
 		seriesSelectPane.setVisible(true);
-		this.add(seriesSelectPane);
-		this.setVisible(true);
+		add(seriesSelectPane);
+		setVisible(true);
 	}	
 }

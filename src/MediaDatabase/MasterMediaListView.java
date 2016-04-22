@@ -17,8 +17,7 @@ public class MasterMediaListView extends JScrollPane implements ActionListener {
 	private ArrayList<Media> masterMediaList = new ArrayList<Media>();
 
 	public MasterMediaListView() {
-/**
-		ArrayList<String> titles = new ArrayList<String>();
+		/**ArrayList<String> titles = new ArrayList<String>();
 		String [] titleArray = new String[titles.size()];
 		JList<String> titleJList = new JList<String>();
 
@@ -64,7 +63,7 @@ public class MasterMediaListView extends JScrollPane implements ActionListener {
 		else {
 			
 		}
-				
+			
 	}
 
 	public void setMasterMediaList(ArrayList<Media> masterMediaList) {
@@ -96,13 +95,13 @@ public class MasterMediaListView extends JScrollPane implements ActionListener {
 			// This panel is a container for the two scroll panes necessary to show
 			// the selection return data.
 			JScrollPane mediaSelectPane = new JScrollPane(titleJList,ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-			this.add(mediaSelectPane);
+			add(mediaSelectPane);
 		} else {
 			JScrollPane pane1 = new JScrollPane(new JList<String>(),ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 			pane1.setSize(Toolkit.getDefaultToolkit().getScreenSize().width/6, Toolkit.getDefaultToolkit().getScreenSize().height/2);
 			pane1.setVisible(true);
 			pane1.repaint();
-			this.add(pane1);
+			add(pane1);
 		}
 	}	
 }
